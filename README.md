@@ -2,6 +2,8 @@
 
 Prototype sistem operasional klinik untuk **Praktik Mandiri dr. Aisyah Fikritama, S.A.** (praktik dokter anak / pediatri).
 
+**🔗 Live demo:** [seha-clinic.vercel.app](https://seha-clinic.vercel.app) · **Website pasien:** [/profil](https://seha-clinic.vercel.app/profil)
+
 > **Disclaimer:** Aplikasi ini adalah prototype yang menggunakan **data dummy saja**. Ini **bukan** sistem rekam medis tersertifikasi dan **tidak boleh** digunakan untuk operasional klinis nyata tanpa proses kepatuhan, keamanan, legal, dan validasi healthcare yang sesuai.
 
 ---
