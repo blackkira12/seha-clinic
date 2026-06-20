@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<title>Studi Kelayakan — SEHA Clinic Operations System</title>
+<style>
+  :root{
+    --brand:#2563eb; --brand-dark:#1d4ed8; --brand-50:#eff6ff; --brand-100:#dbeafe;
+    --ink:#1f2937; --muted:#6b7280; --line:#e5e7eb;
+    --safe-bg:#ecfdf5; --safe:#047857; --warn-bg:#fffbeb; --warn:#b45309; --danger-bg:#fef2f2; --danger:#b91c1c;
+  }
+  *{ box-sizing:border-box; }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{
+    font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink); font-size:10.5pt; line-height:1.5; margin:0;
+  }
+  .page{ padding:0; }
+  h1,h2,h3{ color:var(--ink); line-height:1.25; }
+  h2{ font-size:14pt; margin:22px 0 8px; padding-bottom:5px; border-bottom:2px solid var(--brand-100); color:var(--brand-dark); }
+  h3{ font-size:11.5pt; margin:14px 0 4px; color:#374151; }
+  p{ margin:6px 0; }
+  small,.muted{ color:var(--muted); }
+  a{ color:var(--brand); text-decoration:none; }
+
+  /* Cover */
+  .cover{
+    background:linear-gradient(135deg,var(--brand) 0%,var(--brand-dark) 100%);
+    color:#fff; padding:46px 40px; border-radius:14px; margin-bottom:24px;
+  }
+  .cover .kicker{ font-size:9pt; letter-spacing:.12em; text-transform:uppercase; color:var(--brand-100); }
+  .cover h1{ color:#fff; font-size:24pt; margin:8px 0 4px; }
+  .cover .sub{ font-size:12pt; color:#e0ecff; margin:0 0 18px; }
+  .cover .meta{ display:flex; flex-wrap:wrap; gap:8px 26px; font-size:9.5pt; color:#dbe7ff; }
+  .cover .meta b{ color:#fff; }
+
+  .note{
+    background:var(--warn-bg); border:1px solid #fde68a; color:var(--warn);
+    border-radius:8px; padding:9px 12px; font-size:9pt; margin:14px 0;
+  }
+
+  table{ width:100%; border-collapse:collapse; margin:10px 0 16px; font-size:9.5pt; page-break-inside:avoid; }
+  th,td{ text-align:left; padding:7px 9px; border-bottom:1px solid var(--line); vertical-align:top; }
+  thead th{ background:var(--brand-50); color:var(--brand-dark); font-weight:600; border-bottom:1.5px solid var(--brand-100); }
+  tbody tr:nth-child(even){ background:#fafbfc; }
+  td.num,th.num{ text-align:right; white-space:nowrap; }
+  tr.total td{ font-weight:700; background:var(--brand-50); color:var(--brand-dark); border-top:1.5px solid var(--brand-100); }
+
+  .badge{ display:inline-block; padding:1px 8px; border-radius:999px; font-size:8.5pt; font-weight:600; border:1px solid; }
+  .b-safe{ background:var(--safe-bg); color:var(--safe); border-color:#a7f3d0; }
+  .b-warn{ background:var(--warn-bg); color:var(--warn); border-color:#fde68a; }
+  .b-danger{ background:var(--danger-bg); color:var(--danger); border-color:#fecaca; }
+
+  ul{ margin:6px 0 10px; padding-left:18px; } li{ margin:2px 0; }
+  .kv{ font-weight:600; }
+  .section{ page-break-inside:auto; }
+  .avoid{ page-break-inside:avoid; }
+  hr{ border:none; border-top:1px solid var(--line); margin:18px 0; }
+  .footer-note{ font-size:8.5pt; color:var(--muted); font-style:italic; margin-top:22px; border-top:1px solid var(--line); padding-top:10px; }
+  @page{ size:A4; margin:16mm 14mm 16mm 14mm; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="cover">
+    <div class="kicker">Studi Kelayakan · Feasibility Study</div>
+    <h1>SEHA Clinic Operations System</h1>
+    <div class="sub">Praktik Mandiri dr. Aisyah Fikritama, S.A. — Praktik Dokter Anak</div>
+    <div class="meta">
+      <span><b>Versi:</b> 1.0</span>
+      <span><b>Tanggal:</b> 20 Juni 2026</span>
+      <span><b>Disusun oleh:</b> Fadhil — Business Analyst / Product &amp; Implementation Designer</span>
+      <span><b>Status:</b> Internal — pengambilan keputusan investasi proyek</span>
+    </div>
+  </div>
+
+  <div class="note">
+    Catatan: Seluruh angka operasional, finansial, dan volume pasien dalam dokumen ini menggunakan
+    <b>data dummy/ilustratif</b> dari prototype. Pada implementasi nyata, angka wajib divalidasi dengan data aktual praktik.
+  </div>
+
+  <div class="section">
+    <h2>1. Ringkasan Eksekutif</h2>
+    <p>Praktik Mandiri dr. Aisyah Fikritama, S.A. (praktik dokter anak) membutuhkan sistem operasional klinik yang
+    <b>sederhana, cepat, dan low-click</b> untuk merapikan alur kerja harian: registrasi, antrean, pemeriksaan (RME/SOAP),
+    farmasi &amp; inventory, kasir, pelaporan, hingga pengingat orang tua. Studi ini menilai kelayakan pembangunan dan
+    pengoperasian sistem tersebut.</p>
+    <p><b>Kesimpulan utama: PROYEK LAYAK DILANJUTKAN (GO), dengan syarat.</b></p>
+    <table class="avoid">
+      <thead><tr><th>Dimensi</th><th>Putusan</th><th>Catatan</th></tr></thead>
+      <tbody>
+        <tr><td>Teknis</td><td><span class="badge b-safe">Sangat Layak</span></td><td>Stack modern (Next.js), hosting cloud terjangkau, skalabel</td></tr>
+        <tr><td>Operasional</td><td><span class="badge b-safe">Layak</span></td><td>Desain low-click sesuai preferensi dokter; perlu pelatihan &amp; manajemen perubahan</td></tr>
+        <tr><td>Ekonomi (langganan operasional)</td><td><span class="badge b-safe">Layak</span></td><td>±Rp11–14jt/tahun ≈ 2–3% omzet; sangat terjangkau</td></tr>
+        <tr><td>Ekonomi (build Rp108jt, klien tunggal)</td><td><span class="badge b-warn">Bersyarat</span></td><td>Hard-ROI marginal untuk 1 klinik; dijustifikasi kepatuhan RME, kualitas &amp; pertumbuhan. Disarankan Model A atau model produk multi-klinik</td></tr>
+        <tr><td>Hukum &amp; Kepatuhan</td><td><span class="badge b-warn">Bersyarat</span></td><td>Wajib hardening PDP &amp; RME sebelum memakai data pasien nyata</td></tr>
+        <tr><td>Jadwal</td><td><span class="badge b-safe">Layak</span></td><td>MVP ±2,5–3 bulan</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>2. Latar Belakang &amp; Deskripsi Proyek</h2>
+    <p>Saat ini dokter memprioritaskan <b>kesederhanaan dan efisiensi alur kerja</b> dibanding kelengkapan fitur. Sistem EMR
+    yang terlalu kompleks dinilai lambat dan memperbanyak klik.</p>
+    <p><span class="kv">Solusi yang diusulkan:</span> sistem operasional klinik berbasis web dengan modul registrasi &amp; antrean
+    (aturan keadilan 2 online : 1 offline), vitals perawat, SOAP dokter + ICD-10, KMS Digital Anak (kurva pertumbuhan),
+    farmasi &amp; inventory + pergerakan stok, kasir &amp; billing, laporan PDF, surat sehat/sakit, reminder center manual,
+    dashboard manajemen, serta website publik praktik.</p>
+    <p>Prototype fungsional telah dibangun (17 halaman, data dummy) sebagai bukti konsep dan telah dideploy di Vercel.</p>
+  </div>
+
+  <div class="section">
+    <h2>3. Tujuan &amp; Ruang Lingkup</h2>
+    <h3>Tujuan</h3>
+    <ul>
+      <li>Mengurangi dokumentasi manual yang tersebar.</li>
+      <li>Mempercepat alur pasien dari datang hingga pulang.</li>
+      <li>Memantau stok obat/vaksin &amp; kadaluarsa.</li>
+      <li>Mempermudah pelaporan &amp; sertifikat.</li>
+      <li>Menyediakan visibilitas manajerial (tren pasien, keuangan, stok).</li>
+      <li>Menyiapkan kepatuhan RME &amp; kesiapan integrasi SATUSEHAT.</li>
+    </ul>
+    <p><span class="kv">Dalam lingkup (MVP):</span> seluruh modul operasional inti + dashboard manajemen + website publik.<br/>
+    <span class="kv">Di luar lingkup (Fase 2+):</span> integrasi WhatsApp API, SATUSEHAT dua arah, billing/asuransi lanjutan, analitik prediktif.</p>
+  </div>
+
+  <div class="section">
+    <h2>4. Kelayakan Teknis — <span class="badge b-safe">Sangat Layak</span></h2>
+    <table>
+      <thead><tr><th>Aspek</th><th>Penilaian</th></tr></thead>
+      <tbody>
+        <tr><td>Teknologi</td><td>Next.js 14 + TypeScript + Tailwind; matang, banyak talenta, dokumentasi luas</td></tr>
+        <tr><td>Hosting</td><td>Vercel / VPS kecil — biaya rendah, auto-scaling, SSL gratis</td></tr>
+        <tr><td>Basis data (produksi)</td><td>PostgreSQL terkelola (Supabase/Neon) — cukup untuk skala 1 praktik</td></tr>
+        <tr><td>Skalabilitas</td><td>Dapat tumbuh dari 1 klinik ke multi-klinik (model produk)</td></tr>
+        <tr><td>Keamanan</td><td>Mendukung enkripsi in-transit &amp; at-rest; perlu kontrol akses &amp; audit log pada produksi</td></tr>
+        <tr><td>Integrasi masa depan</td><td>Siap HL7 FHIR / SATUSEHAT (readiness, Fase 2)</td></tr>
+        <tr><td>Risiko teknis</td><td>Rendah — tanpa teknologi eksperimental</td></tr>
+      </tbody>
+    </table>
+    <p class="muted"><b>Kesenjangan prototype → produksi:</b> autentikasi nyata, basis data + persistensi, audit log, backup,
+    enkripsi at-rest, RBAC server-side, hardening keamanan.</p>
+  </div>
+
+  <div class="section">
+    <h2>5. Kelayakan Operasional — <span class="badge b-safe">Layak</span></h2>
+    <ul>
+      <li><b>Kesesuaian pengguna:</b> desain low-click &amp; tablet-friendly selaras preferensi dokter (cepat, sedikit klik).</li>
+      <li><b>Perubahan proses:</b> alur baku registrasi → vitals → SOAP → farmasi → kasir → laporan. Perlu SOP &amp; pelatihan singkat.</li>
+      <li><b>Adopsi:</b> risiko rendah-menengah karena antarmuka sederhana; titik kritis adalah disiplin input data.</li>
+      <li><b>Dukungan:</b> pemeliharaan &amp; helpdesk oleh pengembang (termasuk dalam langganan).</li>
+      <li><b>Manajemen perubahan:</b> onboarding 1 kali (deploy + migrasi data + pelatihan), lalu pendampingan ringan bulan pertama.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>6. Kelayakan Ekonomi / Finansial</h2>
+
+    <h3>6.1 Profil Operasi (ilustratif)</h3>
+    <table class="avoid">
+      <thead><tr><th>Metrik</th><th class="num">Nilai</th></tr></thead>
+      <tbody>
+        <tr><td>Kunjungan/bulan (rata-rata)</td><td class="num">±113 (96–132, tren +8%/bln)</td></tr>
+        <tr><td>Kunjungan/tahun (anualisasi)</td><td class="num">±1.356</td></tr>
+        <tr><td>Omzet/bulan (rata-rata)</td><td class="num">±Rp45 juta</td></tr>
+        <tr><td>Biaya operasional klinik/bulan</td><td class="num">±Rp25,5 juta</td></tr>
+        <tr><td>Laba bersih/bulan</td><td class="num">±Rp19,3 juta</td></tr>
+      </tbody>
+    </table>
+
+    <h3>6.2 Struktur Biaya — Model A (Build sebagai Capital) — direkomendasikan</h3>
+    <p class="muted">A. Biaya pengembangan (one-time / capital):</p>
+    <table class="avoid">
+      <thead><tr><th>Item</th><th class="num">Biaya</th></tr></thead>
+      <tbody>
+        <tr><td>Pengembangan aplikasi (build)</td><td class="num">Rp108.000.000</td></tr>
+        <tr><td>Onboarding (deploy, migrasi, pelatihan)</td><td class="num">Rp3.000.000</td></tr>
+        <tr class="total"><td>Total capital (Tahun 0)</td><td class="num">Rp111.000.000</td></tr>
+      </tbody>
+    </table>
+    <p class="muted">Build dapat dicicil termin: DP 30% → MVP 40% → UAT 20% → Go-live 10%.</p>
+
+    <p class="muted">B. Biaya operasional tahunan (HPP):</p>
+    <table class="avoid">
+      <thead><tr><th>Komponen</th><th class="num">Biaya/tahun</th></tr></thead>
+      <tbody>
+        <tr><td>Domain (.id)</td><td class="num">Rp200.000</td></tr>
+        <tr><td>Cloud hosting</td><td class="num">Rp2.400.000</td></tr>
+        <tr><td>Database &amp; storage terkelola</td><td class="num">Rp1.800.000</td></tr>
+        <tr><td>Backup &amp; monitoring</td><td class="num">Rp600.000</td></tr>
+        <tr><td>Pemeliharaan &amp; dukungan teknis</td><td class="num">Rp3.600.000</td></tr>
+        <tr class="total"><td>Total HPP operasional</td><td class="num">Rp8.600.000</td></tr>
+        <tr><td>Langganan ke klinik (HPP + margin ±30%)</td><td class="num"><b>±Rp11.200.000 / tahun</b> (≈Rp930rb/bln)</td></tr>
+      </tbody>
+    </table>
+    <p><b>Langganan tahunan ≈ 2–2,5% dari omzet</b> → sangat terjangkau.</p>
+
+    <h3>6.3 Total Cost of Ownership (TCO)</h3>
+    <table class="avoid">
+      <thead><tr><th>Horizon</th><th class="num">Model A (capital di muka + langganan)</th></tr></thead>
+      <tbody>
+        <tr><td>Tahun 1</td><td class="num">Rp111jt + Rp11,2jt = <b>Rp122,2jt</b></td></tr>
+        <tr><td>Tahun 2–5 (per tahun)</td><td class="num"><b>Rp11,2jt/tahun</b></td></tr>
+        <tr><td>TCO 5 tahun</td><td class="num">±Rp167jt</td></tr>
+        <tr><td>Rata-rata per tahun (5 thn)</td><td class="num">±Rp33,4jt/tahun</td></tr>
+      </tbody>
+    </table>
+
+    <h3>6.4 Estimasi Manfaat (konservatif, ilustratif)</h3>
+    <table class="avoid">
+      <thead><tr><th>Sumber manfaat</th><th class="num">Estimasi/tahun</th></tr></thead>
+      <tbody>
+        <tr><td>Recapture follow-up &amp; imunisasi via reminder (±3 kunjungan/bln × Rp150rb)</td><td class="num">Rp5,4 juta</td></tr>
+        <tr><td>Pengurangan kerugian stok kadaluarsa (monitoring)</td><td class="num">Rp3,6 juta</td></tr>
+        <tr><td>Pengurangan kebocoran billing (±1% omzet)</td><td class="num">Rp5,4 juta</td></tr>
+        <tr><td>Efisiensi waktu dokumentasi (±9 jam/bln)</td><td class="num">Tak langsung</td></tr>
+        <tr class="total"><td>Manfaat terukur</td><td class="num">±Rp14,4 juta/tahun</td></tr>
+      </tbody>
+    </table>
+    <p class="muted"><b>Manfaat tak terukur (signifikan):</b> kepatuhan regulasi RME, citra profesional, kepuasan &amp; retensi orang tua,
+    transparansi manajerial, kesiapan tumbuh (multi-cabang / SATUSEHAT).</p>
+
+    <h3>6.5 Analisis &amp; Sensitivitas</h3>
+    <ul>
+      <li><b>Langganan operasional:</b> manfaat terukur (±Rp14,4jt) menutup biaya langganan (±Rp11,2jt) → <b>net positif</b>. Layak.</li>
+      <li><b>Biaya build Rp108jt (klien tunggal):</b> jika dinilai murni dari manfaat terukur, payback capital lambat. Justifikasi utama bersifat <b>strategis &amp; regulatori</b> (RME kini diwajibkan), bukan semata efisiensi.</li>
+      <li><b>Opsi memperbaiki ekonomi build:</b> (1) turunkan scope build untuk skala solo (&lt; Rp108jt); (2) model produk multi-klinik → amortisasi per klinik kecil (±Rp2,2jt/thn) dengan harga jual ±Rp14,4jt/thn; (3) perlakukan build sebagai capital (Model A).</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>7. Kelayakan Jadwal — <span class="badge b-safe">Layak</span></h2>
+    <table class="avoid">
+      <thead><tr><th>Fase</th><th>Durasi</th><th>Output</th></tr></thead>
+      <tbody>
+        <tr><td>Analisis &amp; desain</td><td>2–3 minggu</td><td>Requirement final, desain UI, skema data</td></tr>
+        <tr><td>Pengembangan MVP</td><td>6–8 minggu</td><td>Modul inti + database + autentikasi</td></tr>
+        <tr><td>UAT &amp; implementasi</td><td>2 minggu</td><td>Uji terima, perbaikan, migrasi data</td></tr>
+        <tr><td>Pelatihan &amp; go-live</td><td>1 minggu</td><td>Pelatihan staf, peluncuran</td></tr>
+        <tr class="total"><td>Total</td><td>±2,5–3 bulan</td><td>Sistem operasional</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>8. Kelayakan Hukum &amp; Kepatuhan — <span class="badge b-warn">Bersyarat</span></h2>
+    <table>
+      <thead><tr><th>Regulasi</th><th>Relevansi</th><th>Tindakan</th></tr></thead>
+      <tbody>
+        <tr><td>Permenkes No. 24/2022 — Rekam Medis Elektronik</td><td>RME diwajibkan bagi fasyankes</td><td>Sistem ini mendukung pemenuhan; perlu validasi fitur RME final</td></tr>
+        <tr><td>UU No. 27/2022 — Pelindungan Data Pribadi (PDP)</td><td>Data pasien = data pribadi/sensitif</td><td>Enkripsi, kontrol akses, persetujuan, retensi, audit log</td></tr>
+        <tr><td>SATUSEHAT (Kemenkes)</td><td>Interoperabilitas nasional</td><td>Kesiapan HL7 FHIR (Fase 2)</td></tr>
+        <tr><td>Kerahasiaan rekam medis</td><td>Etik &amp; hukum</td><td>RBAC, audit trail, pembatasan akses per peran</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Prototype saat ini belum memenuhi kepatuhan produksi (tanpa autentikasi/enkripsi nyata). Hardening kepatuhan
+    wajib sebelum memakai data pasien sungguhan. Verifikasi regulatori final disarankan bersama konsultan hukum kesehatan.</p>
+  </div>
+
+  <div class="section">
+    <h2>9. Analisis Risiko &amp; Mitigasi</h2>
+    <table>
+      <thead><tr><th>Risiko</th><th>Dampak</th><th>Prob.</th><th>Mitigasi</th></tr></thead>
+      <tbody>
+        <tr><td>Adopsi staf rendah / resistensi</td><td>Sedang</td><td>Sedang</td><td>Pelatihan, SOP, desain low-click, pendampingan awal</td></tr>
+        <tr><td>Disiplin input data kurang</td><td>Sedang</td><td>Sedang</td><td>Validasi form, indikator kelengkapan, kebiasaan harian</td></tr>
+        <tr><td>Biaya build berat untuk 1 klinik</td><td>Tinggi</td><td>Sedang</td><td>Model A (capital/cicil), turunkan scope, atau model produk</td></tr>
+        <tr><td>Kepatuhan PDP/RME belum siap</td><td>Tinggi</td><td>Tinggi (jika diabaikan)</td><td>Hardening keamanan sebelum data nyata; audit kepatuhan</td></tr>
+        <tr><td>Ketergantungan pada 1 pengembang</td><td>Sedang</td><td>Sedang</td><td>Dokumentasi, kontrak pemeliharaan, kode rapi &amp; terstruktur</td></tr>
+        <tr><td>Downtime hosting</td><td>Rendah</td><td>Rendah</td><td>SLA hosting, backup harian, monitoring</td></tr>
+        <tr><td>Perubahan regulasi (SATUSEHAT)</td><td>Sedang</td><td>Sedang</td><td>Arsitektur siap integrasi, roadmap Fase 2</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section avoid">
+    <h2>10. Asumsi</h2>
+    <ul>
+      <li>Volume pasien &amp; keuangan mengikuti data ilustratif prototype (Jan–Jun 2026).</li>
+      <li>Biaya hosting/infrastruktur memakai tarif lean Indonesia untuk 1 praktik trafik rendah.</li>
+      <li>Build cost Rp108jt sesuai nilai kontrak pengembangan; dapat di-rescope.</li>
+      <li>Margin layanan ±30%; horizon analisis 5 tahun.</li>
+      <li>Manfaat terukur bersifat konservatif &amp; ilustratif.</li>
+    </ul>
+  </div>
+
+  <div class="section avoid">
+    <h2>11. Kesimpulan &amp; Rekomendasi</h2>
+    <p><b>Putusan: <span class="badge b-safe">GO (Layak dilanjutkan)</span> — dengan syarat.</b></p>
+    <ol>
+      <li><b>Adopsi Model A</b> — biaya build sebagai capital (boleh dicicil termin), lalu langganan operasional ringan ±Rp11–14jt/tahun.</li>
+      <li><b>Operasi tahunan layak secara ekonomi</b> — manfaat terukur menutup biaya langganan, dengan manfaat strategis/kepatuhan besar.</li>
+      <li><b>Wajib hardening kepatuhan</b> (PDP + RME + keamanan) sebelum memakai data pasien nyata.</li>
+      <li><b>Pertimbangkan model produk multi-klinik</b> agar biaya build terbagi &amp; margin pengembang lebih sehat.</li>
+      <li><b>Implementasi bertahap</b>: MVP → stabilisasi → Fase 2 (WhatsApp, SATUSEHAT).</li>
+    </ol>
+    <p><b>Justifikasi inti:</b> kebutuhan kepatuhan RME yang kini diwajibkan, peningkatan kualitas &amp; efisiensi layanan,
+    transparansi manajerial, dan kesiapan tumbuh — menjadikan proyek ini bernilai strategis melampaui sekadar penghematan biaya jangka pendek.</p>
+  </div>
+
+  <p class="footer-note">Dokumen ini bagian dari prototype portofolio dan menggunakan data dummy. Bukan nasihat finansial, hukum, atau medis profesional.
+  Live demo: seha-clinic.vercel.app</p>
+
+</div>
+</body>
+</html>
