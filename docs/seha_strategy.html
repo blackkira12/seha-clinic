@@ -1,0 +1,1089 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<title>SEHA — Strategic Business Plan & Feasibility Study (Consulting Edition)</title>
+<style>
+  :root{
+    --brand:#2563eb; --brand-dark:#1d4ed8; --brand-50:#eff6ff; --brand-100:#dbeafe; --brand-200:#bfdbfe; --brand-700:#1d4ed8;
+    --ink:#1f2937; --muted:#6b7280; --line:#e5e7eb;
+    --safe-bg:#ecfdf5; --safe:#047857; --warn-bg:#fffbeb; --warn:#b45309; --danger-bg:#fef2f2; --danger:#b91c1c;
+    --ink2:#374151;
+  }
+  *{ box-sizing:border-box; }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; color:var(--ink); font-size:10.4pt; line-height:1.58; margin:0; }
+  h1,h2,h3,h4{ line-height:1.25; }
+  h2{ font-size:14.5pt; margin:24px 0 10px; padding-bottom:6px; border-bottom:2px solid var(--brand-100); color:var(--brand-dark); }
+  h3{ font-size:11.4pt; margin:16px 0 6px; color:var(--ink2); }
+  h4{ font-size:10.4pt; margin:11px 0 4px; color:var(--ink2); }
+  p{ margin:7px 0; } ul,ol{ margin:7px 0 11px; padding-left:18px; } li{ margin:3px 0; }
+  .muted{ color:var(--muted); } small{ font-size:8.6pt; }
+  .lead{ font-size:11pt; }
+  .part{ background:linear-gradient(135deg,var(--brand) 0%,var(--brand-dark) 100%); color:#fff; padding:16px 20px; border-radius:10px; margin:0 0 14px; }
+  .part .k{ font-size:8.5pt; letter-spacing:.14em; text-transform:uppercase; color:var(--brand-100); }
+  .part h2{ color:#fff; border:none; margin:2px 0 0; padding:0; font-size:15pt; }
+  .cover{ background:linear-gradient(135deg,var(--brand) 0%,#1e3a8a 100%); color:#fff; padding:60px 44px; border-radius:16px; margin-bottom:18px; }
+  .cover .kicker{ font-size:9pt; letter-spacing:.16em; text-transform:uppercase; color:var(--brand-100); }
+  .cover h1{ color:#fff; font-size:30pt; margin:10px 0 2px; }
+  .cover .sub{ font-size:12.5pt; color:#dbeafe; margin:0 0 20px; }
+  .cover .meta{ display:flex; flex-wrap:wrap; gap:8px 26px; font-size:9.3pt; color:#c7dafe; }
+  .cover .meta b{ color:#fff; }
+  .note{ background:var(--warn-bg); border:1px solid #fde68a; color:var(--warn); border-radius:8px; padding:8px 12px; font-size:8.6pt; margin:11px 0; }
+  .callout{ background:var(--brand-50); border-left:4px solid var(--brand); border-radius:6px; padding:9px 13px; margin:10px 0; font-size:9.4pt; }
+  .callout b{ color:var(--brand-dark); }
+  table{ width:100%; border-collapse:collapse; margin:10px 0 16px; font-size:9.4pt; page-break-inside:avoid; }
+  th,td{ text-align:left; padding:7px 9px; border-bottom:1px solid var(--line); vertical-align:top; }
+  thead th{ background:var(--brand-50); color:var(--brand-dark); font-weight:600; border-bottom:1.5px solid var(--brand-100); }
+  tbody tr:nth-child(even){ background:#fafbfc; }
+  td.num,th.num{ text-align:right; white-space:nowrap; }
+  tr.total td{ font-weight:700; background:var(--brand-50); color:var(--brand-dark); border-top:1.5px solid var(--brand-100); }
+  tr.pos td{ color:var(--safe); } tr.neg td{ color:var(--danger); }
+  .badge{ display:inline-block; padding:1px 7px; border-radius:999px; font-size:7.6pt; font-weight:600; border:1px solid; }
+  .b-safe{ background:var(--safe-bg); color:var(--safe); border-color:#a7f3d0; }
+  .b-warn{ background:var(--warn-bg); color:var(--warn); border-color:#fde68a; }
+  .b-danger{ background:var(--danger-bg); color:var(--danger); border-color:#fecaca; }
+  .b-info{ background:var(--brand-50); color:var(--brand-dark); border-color:var(--brand-200); }
+  .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:13px; }
+  .grid3{ display:grid; grid-template-columns:repeat(3,1fr); gap:11px; }
+  .grid4{ display:grid; grid-template-columns:repeat(4,1fr); gap:9px; }
+  .kpi{ border:1px solid var(--line); border-radius:9px; padding:9px 11px; }
+  .kpi .l{ font-size:7.8pt; color:var(--muted); } .kpi .v{ font-size:13pt; font-weight:700; color:var(--brand-dark); }
+  .card{ border:1px solid var(--line); border-radius:9px; padding:10px 12px; }
+  .card h4{ margin-top:0; color:var(--brand-dark); }
+  .bmc{ display:grid; grid-template-columns:repeat(5,1fr); grid-auto-rows:minmax(58px,auto); gap:6px; font-size:8pt; }
+  .bmc div{ border:1px solid var(--line); border-radius:6px; padding:6px 7px; } .bmc b{ color:var(--brand-dark); display:block; margin-bottom:2px; font-size:8pt; }
+  .errc{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .errc .q{ border:1px solid var(--line); border-radius:8px; padding:9px 11px; }
+  .errc .q.elim{ border-top:3px solid var(--danger); } .errc .q.red{ border-top:3px solid var(--warn); }
+  .errc .q.raise{ border-top:3px solid var(--brand); } .errc .q.create{ border-top:3px solid var(--safe); }
+  .toc{ font-size:9.2pt; } .toc .p{ font-weight:700; color:var(--brand-dark); margin:9px 0 3px; }
+  .toc ol{ margin:0 0 4px; }
+  .heat-H{ background:var(--danger-bg); color:var(--danger); font-weight:600; text-align:center; }
+  .heat-M{ background:var(--warn-bg); color:var(--warn); font-weight:600; text-align:center; }
+  .heat-L{ background:var(--safe-bg); color:var(--safe); font-weight:600; text-align:center; }
+  .ref{ font-size:8pt; color:#4b5563; }
+  .pagebreak{ page-break-before:always; }
+  .avoid{ page-break-inside:avoid; } .section{ page-break-inside:auto; }
+  .footer-note{ font-size:8pt; color:var(--muted); font-style:italic; margin-top:18px; border-top:1px solid var(--line); padding-top:8px; }
+  @page{ size:A4; margin:13mm 12mm 13mm 12mm; }
+</style>
+</head>
+<body>
+
+  <!-- ===================== COVER ===================== -->
+  <div class="cover">
+    <div class="kicker">Strategic Business Plan &amp; Feasibility Study · Consulting Edition</div>
+    <h1>SEHA</h1>
+    <div class="sub">Memenangkan Pasar Operasional Klinik &amp; RME untuk Praktik Primer di Indonesia</div>
+    <div class="meta">
+      <span><b>Versi:</b> 3.0 (Komprehensif)</span>
+      <span><b>Tanggal:</b> 20 Juni 2026</span>
+      <span><b>Basis operasi:</b> Solo (Surakarta)</span>
+      <span><b>Tagline produk:</b> “Kembalikan Waktu Dokter untuk Pasien”</span>
+    </div>
+  </div>
+
+  <div class="note">Dokumen perencanaan strategis internal. Data pasar bersumber publik (Kemenkes, riset pasar, benchmark industri); profil kompetitor bersifat indikatif berdasarkan positioning publik dan <b>memerlukan validasi lanjutan</b>; seluruh proyeksi finansial adalah <b>asumsi yang dieksplisitkan</b>, bukan jaminan kinerja. Bukan nasihat finansial, hukum, atau investasi.</div>
+
+  <!-- ===================== TOC ===================== -->
+  <div class="section avoid">
+    <h2>Daftar Isi</h2>
+    <div class="toc grid2">
+      <div>
+        <div class="p">Pendahuluan</div>
+        <ol><li>Metodologi &amp; Kerangka Analisis</li><li>Ringkasan Eksekutif</li></ol>
+        <div class="p">Bagian I — Konteks Strategis</div>
+        <ol start="3"><li>Konteks Makro &amp; Industri (PESTEL)</li><li>Lanskap Regulasi</li><li>Analisis &amp; Ukuran Pasar (TAM/SAM/SOM)</li><li>Segmentasi &amp; Persona Pelanggan</li></ol>
+        <div class="p">Bagian II — Kompetisi &amp; Posisi</div>
+        <ol start="7"><li>Lanskap Kompetitif &amp; Matriks Fitur</li><li>Porter's Five Forces</li><li>SWOT &amp; Matriks TOWS</li><li>Posisi Kompetitif &amp; Blue Ocean (ERRC)</li><li>Proposisi Nilai &amp; Strategi Produk</li></ol>
+      </div>
+      <div>
+        <div class="p">Bagian III — Model Bisnis &amp; GTM</div>
+        <ol start="12"><li>Business Model Canvas</li><li>Strategi Penetapan Harga</li><li>Strategi Go-to-Market</li><li>Pemasaran &amp; Merek</li><li>Operasi, Teknologi &amp; Keamanan</li><li>Organisasi &amp; Talenta</li></ol>
+        <div class="p">Bagian IV — Finansial &amp; Investasi</div>
+        <ol start="18"><li>Asumsi Kunci</li><li>Ekonomi Unit (mendalam)</li><li>Proyeksi Pendapatan &amp; P&amp;L 5 Tahun</li><li>Arus Kas &amp; Break-even</li><li>Kebutuhan Pendanaan &amp; Use of Funds</li><li>Valuasi &amp; Imbal Hasil (DCF + Multiple)</li><li>Skenario &amp; Sensitivitas</li></ol>
+        <div class="p">Bagian V — Risiko &amp; Eksekusi</div>
+        <ol start="25"><li>Penilaian Kelayakan</li><li>Risk Register &amp; Matriks</li><li>Roadmap, Rencana 90 Hari &amp; OKR</li><li>Sintesis Strategis: How to Win</li><li>Lampiran, Glosarium &amp; Referensi</li></ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== 1. METHODOLOGY ===================== -->
+  <div class="section avoid">
+    <h2>1. Metodologi &amp; Kerangka Analisis</h2>
+    <p>Dokumen ini disusun dengan pendekatan <b>hypothesis-driven, MECE, dan fact-based</b> ala konsultan strategi terkemuka.
+    Setiap rekomendasi mengikuti logika <i>situation → complication → resolution</i> dengan prinsip <i>"so what"</i>.</p>
+    <table>
+      <thead><tr><th>Domain</th><th>Kerangka yang digunakan</th><th>Tujuan analitik</th></tr></thead>
+      <tbody>
+        <tr><td>Lingkungan makro</td><td>PESTEL</td><td>Memetakan kekuatan eksternal &amp; tailwind regulasi</td></tr>
+        <tr><td>Ukuran pasar</td><td>TAM/SAM/SOM (bottom-up &amp; top-down)</td><td>Potensi &amp; target realistis</td></tr>
+        <tr><td>Pelanggan</td><td>Segmentation, Persona, Jobs-to-be-Done, WTP</td><td>Fokus segmen &amp; pesan</td></tr>
+        <tr><td>Industri</td><td>Porter's Five Forces</td><td>Daya tarik &amp; sumber profit pool</td></tr>
+        <tr><td>Strategi</td><td>SWOT/TOWS, Blue Ocean ERRC, peta posisi 2×2</td><td>Diferensiasi &amp; "how to win"</td></tr>
+        <tr><td>Model bisnis</td><td>Business Model Canvas, Value Proposition Canvas</td><td>Koherensi model</td></tr>
+        <tr><td>Ekonomi unit</td><td>CAC, LTV, payback, churn, NRR, magic number, Rule of 40</td><td>Kesehatan &amp; efisiensi modal</td></tr>
+        <tr><td>Valuasi</td><td>DCF (NPV/IRR), comparable ARR multiple</td><td>Imbal hasil investasi</td></tr>
+        <tr><td>Ketidakpastian</td><td>Skenario (bear/base/bull), sensitivitas (tornado)</td><td>Ketahanan keputusan</td></tr>
+        <tr><td>Risiko &amp; eksekusi</td><td>Risk register, matriks prob×dampak, OKR/90-day plan</td><td>Mitigasi &amp; eksekusi</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ===================== 2. EXEC SUMMARY ===================== -->
+  <div class="section">
+    <h2>2. Ringkasan Eksekutif</h2>
+    <p class="lead"><b>Tesis investasi:</b> Indonesia mewajibkan Rekam Medis Elektronik (UU Kesehatan 17/2023), namun puluhan ribu
+    praktik mandiri &amp; klinik pratama belum terdigitalisasi karena solusi yang ada terlalu kompleks atau mahal. SEHA menang
+    dengan menjadi <b>yang paling sederhana, paling terjangkau, dan patuh-regulasi</b> — sebuah strategi <i>blue ocean</i> pada
+    segmen yang diabaikan pemain besar.</p>
+
+    <div class="grid4 avoid" style="margin:10px 0">
+      <div class="kpi"><div class="l">TAM (ARR potensial)</div><div class="v">Rp332 M</div></div>
+      <div class="kpi"><div class="l">SAM</div><div class="v">Rp83 M</div></div>
+      <div class="kpi"><div class="l">Break-even</div><div class="v">±47 klinik</div></div>
+      <div class="kpi"><div class="l">LTV : CAC</div><div class="v">±16 : 1</div></div>
+      <div class="kpi"><div class="l">CAC payback</div><div class="v">±6 bln</div></div>
+      <div class="kpi"><div class="l">NPV @20%</div><div class="v">+Rp390 jt</div></div>
+      <div class="kpi"><div class="l">IRR (5 thn)</div><div class="v">±48%</div></div>
+      <div class="kpi"><div class="l">Modal dibutuhkan</div><div class="v">±Rp400–500 jt</div></div>
+    </div>
+
+    <h3>Tiga pesan utama</h3>
+    <ol>
+      <li><b>Pasar bernilai &amp; didorong regulasi.</b> TAM ±23.000 fasilitas (±Rp332 miliar ARR); mandat RME menciptakan urgensi beli.</li>
+      <li><b>Ekonomi unit sangat sehat.</b> LTV:CAC ±16:1 dan payback ±6 bulan jauh melampaui benchmark SaaS (3–5:1; &lt;12 bln). Kendala bukan model, melainkan <b>skala &amp; runway</b>.</li>
+      <li><b>Kemenangan ditentukan eksekusi.</b> Diferensiasi simpel + pediatri + kepatuhan, dieksekusi via pilot dr. Aisyah → ekspansi regional Jawa Tengah/DIY.</li>
+    </ol>
+
+    <div class="callout"><b>Rekomendasi (GO).</b> Galang modal ±Rp400–500jt; menangkan pilot sebagai bukti nilai; bangun mesin akuisisi yang
+    repeatable menuju 47 klinik (break-even, Tahun 2–3); naikkan gross margin via otomasi; selesaikan hardening kepatuhan sebelum skala.</div>
+
+    <h3>Ringkasan kelayakan</h3>
+    <table class="avoid">
+      <thead><tr><th>Dimensi</th><th class="num">Putusan</th><th>Catatan inti</th></tr></thead>
+      <tbody>
+        <tr><td>Teknis</td><td class="num"><span class="badge b-safe">Sangat Layak</span></td><td>Stack matang; prototype 17 halaman sudah live di produksi</td></tr>
+        <tr><td>Pasar</td><td class="num"><span class="badge b-safe">Layak</span></td><td>TAM besar + mandat RME</td></tr>
+        <tr><td>Finansial</td><td class="num"><span class="badge b-safe">Layak</span></td><td>NPV+, IRR ±48%, unit economics kuat</td></tr>
+        <tr><td>Operasional</td><td class="num"><span class="badge b-safe">Layak</span></td><td>Low-click; tim ramping basis Solo</td></tr>
+        <tr><td>Hukum/Kepatuhan</td><td class="num"><span class="badge b-warn">Bersyarat</span></td><td>Hardening PDP/RME wajib sebelum data nyata</td></tr>
+        <tr><td>Eksekusi/GTM</td><td class="num"><span class="badge b-warn">Kritis</span></td><td>Mesin penjualan belum terbukti — fokus utama</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ===================== PART I ===================== -->
+  <div class="part pagebreak"><div class="k">Bagian I</div><h2>Konteks Strategis</h2></div>
+
+  <!-- 3. PESTEL -->
+  <div class="section">
+    <h2>3. Konteks Makro &amp; Industri (PESTEL)</h2>
+    <table>
+      <thead><tr><th>Faktor</th><th>Kekuatan kunci</th><th class="num">Dampak ke SEHA</th></tr></thead>
+      <tbody>
+        <tr><td><b>Political</b></td><td>Agenda transformasi kesehatan digital Kemenkes; platform SATUSEHAT sebagai tulang punggung interoperabilitas nasional</td><td class="num"><span class="badge b-safe">Positif</span></td></tr>
+        <tr><td><b>Economic</b></td><td>Belanja kesehatan &amp; kelas menengah tumbuh; namun klinik primer sensitif harga; risiko depresiasi Rupiah (biaya USD)</td><td class="num"><span class="badge b-warn">Campuran</span></td></tr>
+        <tr><td><b>Social</b></td><td>Adopsi digital tinggi; meningkatnya ekspektasi orang tua atas layanan anak yang rapi &amp; modern</td><td class="num"><span class="badge b-safe">Positif</span></td></tr>
+        <tr><td><b>Technological</b></td><td>Cloud terjangkau; standar HL7 FHIR/SNOMED; AI untuk efisiensi dokumentasi</td><td class="num"><span class="badge b-safe">Positif</span></td></tr>
+        <tr><td><b>Environmental</b></td><td>Dorongan paperless &amp; efisiensi operasional</td><td class="num"><span class="badge b-info">Netral+</span></td></tr>
+        <tr><td><b>Legal</b></td><td>UU 17/2023 (RME wajib), Permenkes 24/2022, UU 27/2022 (PDP), akreditasi fasyankes</td><td class="num"><span class="badge b-safe">Tailwind kuat</span></td></tr>
+      </tbody>
+    </table>
+    <div class="callout"><b>So what:</b> kombinasi <i>mandat regulasi (push)</i> + <i>ekspektasi pasien (pull)</i> menciptakan jendela waktu (2025–2028)
+    untuk merebut klinik yang belum terdigitalisasi. Pemenang adalah yang menurunkan <b>friksi adopsi</b> (harga + kompleksitas) paling rendah.</div>
+  </div>
+
+  <!-- 4. Regulatory -->
+  <div class="section">
+    <h2>4. Lanskap Regulasi (Pendorong Permintaan)</h2>
+    <table>
+      <thead><tr><th>Regulasi</th><th>Inti</th><th>Implikasi bisnis</th></tr></thead>
+      <tbody>
+        <tr><td>UU No. 17/2023 (Kesehatan)</td><td>Mendorong digitalisasi &amp; rekam medis elektronik; menyelaraskan privasi dengan UU PDP</td><td>Kebutuhan beli RME menjadi <b>wajib</b>, bukan opsional</td></tr>
+        <tr><td>Permenkes No. 24/2022</td><td>Penyelenggaraan Rekam Medis Elektronik bagi fasyankes</td><td>Definisi fitur RME yang harus dipenuhi produk</td></tr>
+        <tr><td>UU No. 27/2022 (PDP)</td><td>Perlindungan data pribadi/sensitif</td><td>Wajib enkripsi, consent, retensi, audit, DPO-readiness</td></tr>
+        <tr><td>SATUSEHAT (Kemenkes)</td><td>Platform interoperabilitas nasional (HL7 FHIR)</td><td>Integrasi = syarat kelayakan jangka menengah &amp; pembeda</td></tr>
+        <tr><td>Akreditasi fasyankes</td><td>Standar mutu klinik/TPMD</td><td>Dokumentasi rapi membantu akreditasi → nilai jual</td></tr>
+      </tbody>
+    </table>
+    <p><b>Kesimpulan:</b> regulasi adalah <b>katalis penjualan terkuat</b>. Pesan komersial SEHA harus memposisikan produk sebagai
+    "jalan termudah &amp; termurah menuju kepatuhan RME &amp; kesiapan SATUSEHAT".</p>
+  </div>
+
+  <!-- 5. Market sizing -->
+  <div class="section pagebreak">
+    <h2>5. Analisis &amp; Ukuran Pasar (TAM / SAM / SOM)</h2>
+    <h3>5.1 Basis data (Kemenkes — Profil Kesehatan Indonesia 2024)</h3>
+    <table class="avoid">
+      <thead><tr><th>Fasilitas</th><th class="num">Jumlah</th><th>Relevansi</th></tr></thead>
+      <tbody>
+        <tr><td>Klinik pratama</td><td class="num">14.564</td><td>Target inti</td></tr>
+        <tr><td>Klinik utama</td><td class="num">2.697</td><td>Ekspansi (lebih kompleks)</td></tr>
+        <tr><td>Klinik milik swasta</td><td class="num">15.311</td><td>Mayoritas addressable</td></tr>
+        <tr><td>Tempat Praktik Mandiri Dokter (TPMD)</td><td class="num">8.465</td><td>Target inti (solo)</td></tr>
+        <tr><td>Praktik Mandiri Dokter Gigi (TPMDG)</td><td class="num">3.946</td><td>Adjacency</td></tr>
+      </tbody>
+    </table>
+    <h3>5.2 Bottom-up sizing</h3>
+    <table class="avoid">
+      <thead><tr><th>Lapisan</th><th>Definisi</th><th class="num">Unit</th><th class="num">ARR @Rp14,4jt</th><th class="num">% TAM</th></tr></thead>
+      <tbody>
+        <tr><td><b>TAM</b></td><td>Klinik pratama + TPMD se-Indonesia</td><td class="num">±23.000</td><td class="num">Rp331,6 M</td><td class="num">100%</td></tr>
+        <tr><td><b>SAM</b></td><td>Swasta, terjangkau digital, fokus Jawa (±25%)</td><td class="num">±5.750</td><td class="num">Rp82,8 M</td><td class="num">25%</td></tr>
+        <tr><td><b>SOM (3 thn)</b></td><td>Target jangka pendek</td><td class="num">±120</td><td class="num">Rp1,73 M</td><td class="num">0,5%</td></tr>
+        <tr><td><b>SOM (5 thn)</b></td><td>Target jangka menengah (±5% SAM)</td><td class="num">±300</td><td class="num">Rp4,32 M</td><td class="num">1,3%</td></tr>
+      </tbody>
+    </table>
+    <h3>5.3 Cross-check top-down &amp; pertumbuhan</h3>
+    <p>Pasar EMR Asia-Pasifik tumbuh ±6,2% CAGR (2025–2032), didorong mandat digitalisasi &amp; ekspansi layanan swasta.
+    Segmen "klinik sederhana" di Indonesia adalah niche bernilai ratusan miliar Rupiah yang <b>kurang dilayani</b>.
+    Target SOM SEHA (±1% TAM dalam 5 tahun) sangat konservatif — memberi ruang upside besar.</p>
+    <div class="callout"><b>So what:</b> bahkan penetrasi &lt;1% TAM sudah membangun bisnis yang sehat &amp; menguntungkan. Pasar bukan kendala;
+    <b>kecepatan &amp; biaya akuisisi</b> adalah variabel penentu.</div>
+  </div>
+
+  <!-- 5.4 Profit pool & value chain -->
+  <div class="section avoid">
+    <h2>5b. Rantai Nilai Industri &amp; Profit Pool</h2>
+    <p>Pemetaan rantai nilai layanan primer menunjukkan di mana SEHA menciptakan &amp; menangkap nilai:</p>
+    <table>
+      <thead><tr><th>Mata rantai</th><th>Pemain</th><th>Margin/daya tarik</th><th>Posisi SEHA</th></tr></thead>
+      <tbody>
+        <tr><td>Akuisisi pasien</td><td>Iklan, rujukan, telemedicine</td><td>Tinggi tapi mahal</td><td>Dukung via website publik &amp; reminder</td></tr>
+        <tr><td>Registrasi &amp; antrean</td><td>Manual / SIM klinik</td><td>Operasional</td><td><b>Inti SEHA</b></td></tr>
+        <tr><td>Pemeriksaan &amp; RME</td><td>Dokter + EMR</td><td>Wajib (regulasi)</td><td><b>Inti SEHA</b></td></tr>
+        <tr><td>Farmasi &amp; stok</td><td>Apotek, distributor</td><td>Margin produk</td><td>Monitoring stok</td></tr>
+        <tr><td>Kasir &amp; klaim</td><td>Kasir, BPJS, asuransi</td><td>Arus kas</td><td>Billing (Fase 2 lanjut)</td></tr>
+        <tr><td>Kepatuhan &amp; pelaporan</td><td>SATUSEHAT, akreditasi</td><td>Beban → peluang</td><td><b>Pembeda SEHA</b></td></tr>
+      </tbody>
+    </table>
+    <div class="callout"><b>So what:</b> SEHA menangkap "lapisan operasional inti + kepatuhan" — titik dengan kebutuhan wajib (RME) &amp; stickiness tinggi.
+    Profit pool terbesar jangka panjang ada di <b>kepatuhan/interoperabilitas</b> (SATUSEHAT) &amp; <b>billing</b>, jalur ekspansi alami SEHA.</div>
+  </div>
+
+  <!-- 6. Segmentation & personas -->
+  <div class="section">
+    <h2>6. Segmentasi &amp; Persona Pelanggan</h2>
+    <h3>6.1 Segmentasi</h3>
+    <table class="avoid">
+      <thead><tr><th>Segmen</th><th>Karakteristik</th><th>WTP/tahun</th><th class="num">Prioritas</th></tr></thead>
+      <tbody>
+        <tr><td>Praktik mandiri dokter (solo)</td><td>1 dokter, 1–3 staf; butuh cepat &amp; murah</td><td>Rp10–18 jt</td><td class="num"><span class="badge b-safe">Beachhead</span></td></tr>
+        <tr><td>Klinik pratama kecil</td><td>2–5 dokter, multi-staf; butuh antrean &amp; multi-user</td><td>Rp15–30 jt</td><td class="num"><span class="badge b-safe">Inti</span></td></tr>
+        <tr><td>Praktik anak/pediatri</td><td>Butuh KMS tumbuh kembang, imunisasi</td><td>Rp12–20 jt</td><td class="num"><span class="badge b-safe">Niche menang</span></td></tr>
+        <tr><td>Klinik utama / multi-cabang</td><td>Kompleks, multi-poli</td><td>Rp30 jt+</td><td class="num"><span class="badge b-warn">Ekspansi</span></td></tr>
+      </tbody>
+    </table>
+    <h3>6.2 Persona &amp; Jobs-to-be-Done</h3>
+    <div class="grid3">
+      <div class="card"><h4>dr. Aisyah — Pemilik Praktik</h4>
+        <p class="muted" style="font-size:8.4pt">Dokter anak, sibuk, anti-ribet.</p>
+        <p><b>JTBD:</b> "Bantu saya selesai dokumentasi cepat &amp; patuh aturan, tanpa memperlambat pelayanan."</p>
+        <p><b>Pemicu beli:</b> kewajiban RME, ingin citra profesional.</p>
+      </div>
+      <div class="card"><h4>Admin Klinik</h4>
+        <p class="muted" style="font-size:8.4pt">Operator harian.</p>
+        <p><b>JTBD:</b> "Kelola antrean, pendaftaran, laporan &amp; kasir tanpa kacau."</p>
+        <p><b>Pemicu:</b> antrean ramai, laporan manual melelahkan.</p>
+      </div>
+      <div class="card"><h4>Orang Tua Pasien</h4>
+        <p class="muted" style="font-size:8.4pt">Pengguna akhir tidak langsung.</p>
+        <p><b>JTBD:</b> "Daftar mudah, tidak menunggu lama, dapat pengingat imunisasi."</p>
+        <p><b>Pengaruh:</b> kepuasan → retensi &amp; rujukan.</p>
+      </div>
+    </div>
+    <div class="callout"><b>Keputusan strategis:</b> jadikan <b>praktik anak/pediatri solo</b> sebagai <i>beachhead</i> (fitur KMS = pembeda tajam,
+    persaingan rendah, advokasi kuat dari orang tua), lalu melebar ke klinik pratama umum.</div>
+  </div>
+
+  <!-- 6b. Customer journey -->
+  <div class="section avoid">
+    <h2>6b. Peta Perjalanan Pelanggan (Customer Journey)</h2>
+    <table>
+      <thead><tr><th>Tahap</th><th>Pikiran dokter</th><th>Titik sentuh SEHA</th><th>Risiko gesekan</th></tr></thead>
+      <tbody>
+        <tr><td>Kesadaran</td><td>"Saya harus pakai RME, tapi ribet."</td><td>Konten edukasi, referral, demo publik</td><td>Tidak tahu SEHA ada</td></tr>
+        <tr><td>Pertimbangan</td><td>"Apa beda &amp; berapa harganya?"</td><td>Demo langsung, perbandingan, harga transparan</td><td>Bandingkan dengan vendor mahal</td></tr>
+        <tr><td>Keputusan</td><td>"Apakah aman &amp; mudah dipakai staf?"</td><td>Pilot/trial, testimoni, founding-partner offer</td><td>Keraguan keamanan/adopsi</td></tr>
+        <tr><td>Onboarding</td><td>"Semoga cepat &amp; tidak mengganggu praktik."</td><td>Deploy + migrasi + pelatihan terpandu</td><td>Setup lambat → frustrasi</td></tr>
+        <tr><td>Retensi</td><td>"Apakah benar menghemat waktu saya?"</td><td>Dukungan responsif, update, dashboard nilai</td><td>Nilai tidak terasa → churn</td></tr>
+        <tr><td>Advokasi</td><td>"Saya rekomendasikan ke kolega."</td><td>Komunitas, program rujukan</td><td>Tidak ada insentif rujuk</td></tr>
+      </tbody>
+    </table>
+    <div class="callout"><b>Prioritas pengalaman:</b> hilangkan gesekan di <b>onboarding</b> (kecepatan go-live) &amp; <b>retensi</b> (nilai terasa) — dua titik
+    yang paling menentukan churn &amp; LTV.</div>
+  </div>
+
+  <!-- ===================== PART II ===================== -->
+  <div class="part pagebreak"><div class="k">Bagian II</div><h2>Kompetisi &amp; Posisi Strategis</h2></div>
+
+  <!-- 7. Competitive landscape -->
+  <div class="section">
+    <h2>7. Lanskap Kompetitif &amp; Matriks Fitur</h2>
+    <p class="muted" style="font-size:8.6pt">Profil di bawah bersifat indikatif berdasarkan positioning publik per kategori; verifikasi kompetitif lanjutan diperlukan sebelum klaim pemasaran.</p>
+    <h3>7.1 Arketipe kompetitor</h3>
+    <table>
+      <thead><tr><th>Arketipe</th><th>Contoh kategori</th><th>Fokus</th><th>Kelemahan vs SEHA</th></tr></thead>
+      <tbody>
+        <tr><td>SIM/EMR klinik &amp; RS lengkap</td><td>Vendor SIMRS/SIMKlinik mapan</td><td>Klinik utama/RS, fitur lengkap</td><td>Kompleks, mahal, banyak klik untuk praktik solo</td></tr>
+        <tr><td>Platform klinik digital</td><td>Vendor klinik-tech komersial</td><td>Klinik berjaringan, ekosistem</td><td>Overkill &amp; biaya tinggi untuk solo</td></tr>
+        <tr><td>Telemedicine &amp; super-app</td><td>Platform konsultasi daring</td><td>Pasien-sentris, telekonsultasi</td><td>Bukan EMR operasional praktik mandiri</td></tr>
+        <tr><td>Platform pemerintah</td><td>SATUSEHAT</td><td>Interoperabilitas nasional</td><td>Bukan sistem operasional harian klinik</td></tr>
+        <tr><td>Manual / generik</td><td>Kertas, spreadsheet, WhatsApp</td><td>Gratis/murah</td><td>Tidak patuh RME, tidak terstruktur</td></tr>
+      </tbody>
+    </table>
+    <h3>7.2 Matriks fitur &amp; harga (ilustratif)</h3>
+    <table>
+      <thead><tr><th>Dimensi</th><th class="num">SEHA</th><th class="num">EMR/SIM lengkap</th><th class="num">Platform klinik</th><th class="num">Manual</th></tr></thead>
+      <tbody>
+        <tr><td>Kemudahan (low-click)</td><td class="num"><span class="badge b-safe">Tinggi</span></td><td class="num"><span class="badge b-danger">Rendah</span></td><td class="num"><span class="badge b-warn">Sedang</span></td><td class="num"><span class="badge b-warn">Sedang</span></td></tr>
+        <tr><td>Harga untuk solo</td><td class="num"><span class="badge b-safe">Murah</span></td><td class="num"><span class="badge b-danger">Mahal</span></td><td class="num"><span class="badge b-warn">Sedang–Mahal</span></td><td class="num"><span class="badge b-safe">Gratis</span></td></tr>
+        <tr><td>KMS tumbuh kembang anak</td><td class="num"><span class="badge b-safe">Ya</span></td><td class="num"><span class="badge b-warn">Sebagian</span></td><td class="num"><span class="badge b-danger">Jarang</span></td><td class="num"><span class="badge b-danger">Tidak</span></td></tr>
+        <tr><td>Kepatuhan RME</td><td class="num"><span class="badge b-safe">Ya*</span></td><td class="num"><span class="badge b-safe">Ya</span></td><td class="num"><span class="badge b-safe">Ya</span></td><td class="num"><span class="badge b-danger">Tidak</span></td></tr>
+        <tr><td>Kesiapan SATUSEHAT</td><td class="num"><span class="badge b-warn">Fase 2</span></td><td class="num"><span class="badge b-safe">Ya</span></td><td class="num"><span class="badge b-safe">Ya</span></td><td class="num"><span class="badge b-danger">Tidak</span></td></tr>
+        <tr><td>Dashboard manajemen</td><td class="num"><span class="badge b-safe">Ya</span></td><td class="num"><span class="badge b-safe">Ya</span></td><td class="num"><span class="badge b-warn">Sebagian</span></td><td class="num"><span class="badge b-danger">Tidak</span></td></tr>
+        <tr><td>Website publik praktik</td><td class="num"><span class="badge b-safe">Ya</span></td><td class="num"><span class="badge b-danger">Tidak</span></td><td class="num"><span class="badge b-warn">Sebagian</span></td><td class="num"><span class="badge b-danger">Tidak</span></td></tr>
+      </tbody>
+    </table>
+    <p class="muted" style="font-size:8.2pt">*Setelah hardening kepatuhan (Fase 1.5). SEHA menang pada sumbu kemudahan + harga + fokus pediatri, bukan kelengkapan enterprise.</p>
+  </div>
+
+  <!-- 8. Five forces -->
+  <div class="section avoid pagebreak">
+    <h2>8. Porter's Five Forces (dengan Skor)</h2>
+    <table>
+      <thead><tr><th>Gaya</th><th class="num">Intensitas</th><th class="num">Skor (1–5)</th><th>Penjelasan &amp; implikasi</th></tr></thead>
+      <tbody>
+        <tr><td>Persaingan antar pemain</td><td class="num"><span class="badge b-warn">Sedang–Tinggi</span></td><td class="num">3,5</td><td>Banyak vendor, tetapi sedikit fokus solo ultra-simpel → ruang diferensiasi</td></tr>
+        <tr><td>Ancaman pendatang baru</td><td class="num"><span class="badge b-warn">Sedang</span></td><td class="num">3,0</td><td>Barrier teknis rendah; namun kepercayaan, kepatuhan &amp; integrasi menaikkan barrier</td></tr>
+        <tr><td>Daya tawar pemasok</td><td class="num"><span class="badge b-safe">Rendah</span></td><td class="num">2,0</td><td>Cloud &amp; AI terkomoditas/tersubstitusi</td></tr>
+        <tr><td>Daya tawar pembeli</td><td class="num"><span class="badge b-warn">Sedang</span></td><td class="num">3,0</td><td>Sensitif harga, namun switching cost tinggi pasca-adopsi (data lock-in alami)</td></tr>
+        <tr><td>Ancaman substitusi</td><td class="num"><span class="badge b-warn">Sedang</span></td><td class="num">3,0</td><td>Manual/generik; tetapi regulasi mengikis substitusi non-compliant</td></tr>
+        <tr class="total"><td>Rata-rata</td><td class="num"></td><td class="num">2,9 / 5</td><td>Industri cukup menarik bagi pemain terdiferensiasi</td></tr>
+      </tbody>
+    </table>
+    <div class="callout"><b>Strategi pertahanan:</b> bangun <i>moat</i> melalui (1) data lock-in &amp; kebiasaan harian, (2) integrasi SATUSEHAT,
+    (3) merek "paling mudah untuk praktik anak", (4) jaringan rujukan dokter regional.</div>
+  </div>
+
+  <!-- 9. SWOT & TOWS -->
+  <div class="section">
+    <h2>9. SWOT &amp; Matriks TOWS (Strategi Turunan)</h2>
+    <div class="grid2 avoid">
+      <table><thead><tr><th>Strengths (S)</th></tr></thead><tbody>
+        <tr><td>S1 Low-click &amp; mudah; fitur KMS pediatri</td></tr>
+        <tr><td>S2 Harga terjangkau; biaya tim Solo efisien</td></tr>
+        <tr><td>S3 Kesiapan kepatuhan RME/SATUSEHAT</td></tr>
+        <tr><td>S4 Prototype live + website publik</td></tr>
+      </tbody></table>
+      <table><thead><tr><th>Weaknesses (W)</th></tr></thead><tbody>
+        <tr><td>W1 Gross margin awal rendah (40%)</td></tr>
+        <tr><td>W2 Ketergantungan engineering tunggal</td></tr>
+        <tr><td>W3 Keamanan produksi belum siap</td></tr>
+        <tr><td>W4 Mesin penjualan belum terbukti</td></tr>
+      </tbody></table>
+      <table><thead><tr><th>Opportunities (O)</th></tr></thead><tbody>
+        <tr><td>O1 Mandat RME (UU 17/2023)</td></tr>
+        <tr><td>O2 TAM besar &amp; belum tergarap</td></tr>
+        <tr><td>O3 Integrasi SATUSEHAT sebagai pembeda</td></tr>
+        <tr><td>O4 Ekspansi regional &amp; multi-vertikal</td></tr>
+      </tbody></table>
+      <table><thead><tr><th>Threats (T)</th></tr></thead><tbody>
+        <tr><td>T1 Kompetitor bermodal besar</td></tr>
+        <tr><td>T2 Liabilitas PDP/keamanan</td></tr>
+        <tr><td>T3 Adopsi klinik lambat</td></tr>
+        <tr><td>T4 Risiko kurs (biaya USD)</td></tr>
+      </tbody></table>
+    </div>
+    <h3>Matriks TOWS — strategi</h3>
+    <table>
+      <thead><tr><th>&nbsp;</th><th>Manfaatkan Peluang (O)</th><th>Hadapi Ancaman (T)</th></tr></thead>
+      <tbody>
+        <tr><td><b>Pakai Kekuatan (S)</b></td><td><b>SO:</b> Posisikan SEHA sebagai jalan termudah &amp; termurah menuju kepatuhan RME (S1,S3 × O1,O3); rebut niche pediatri (S1 × O4)</td><td><b>ST:</b> Bangun moat via stickiness &amp; integrasi SATUSEHAT untuk menahan pemain besar (S3 × T1)</td></tr>
+        <tr><td><b>Perbaiki Kelemahan (W)</b></td><td><b>WO:</b> Gunakan momentum regulasi untuk menggalang modal &amp; merekrut (W2,W4 × O1); naikkan margin via otomasi (W1 × O3)</td><td><b>WT:</b> Prioritaskan hardening keamanan &amp; lindungi data (W3 × T2); diversifikasi biaya untuk redam kurs (W1 × T4)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 10. Positioning & Blue Ocean -->
+  <div class="section avoid">
+    <h2>10. Posisi Kompetitif &amp; Blue Ocean (ERRC)</h2>
+    <p><b>Peta posisi 2×2 (Kesederhanaan × Kelengkapan).</b> EMR enterprise berada di kuadran "kompleks &amp; lengkap" (red ocean);
+    manual berada di "sederhana &amp; tidak lengkap". SEHA menempati ruang kosong: <b>"sangat sederhana &amp; cukup lengkap"</b> —
+    nilai tertinggi bagi praktik solo.</p>
+    <h3>Grid ERRC (Eliminate–Reduce–Raise–Create)</h3>
+    <div class="errc avoid">
+      <div class="q elim"><b style="color:var(--danger)">ELIMINATE</b><ul><li>Fitur enterprise berlebih (multi-poli kompleks)</li><li>Proses setup berbulan-bulan</li><li>Biaya lisensi besar di muka</li></ul></div>
+      <div class="q red"><b style="color:var(--warn)">REDUCE</b><ul><li>Jumlah klik &amp; waktu input</li><li>Kebutuhan pelatihan</li><li>Biaya langganan</li></ul></div>
+      <div class="q raise"><b style="color:var(--brand)">RAISE</b><ul><li>Kecepatan alur harian</li><li>Kepatuhan RME &amp; kesiapan SATUSEHAT</li><li>Dukungan &amp; onboarding lokal</li></ul></div>
+      <div class="q create"><b style="color:var(--safe)">CREATE</b><ul><li>KMS Digital Anak terintegrasi</li><li>Website publik + pendaftaran WhatsApp</li><li>Dashboard manajemen untuk dokter-pemilik</li></ul></div>
+    </div>
+    <div class="callout"><b>Value innovation:</b> SEHA menaikkan nilai (kemudahan, kepatuhan, fitur pediatri) sekaligus menurunkan biaya (harga, kompleksitas)
+    — definisi Blue Ocean. Inilah dasar "how to win".</div>
+  </div>
+
+  <!-- 11. Value prop & product strategy -->
+  <div class="section">
+    <h2>11. Proposisi Nilai &amp; Strategi Produk</h2>
+    <h3>11.1 Value Proposition Canvas (ringkas)</h3>
+    <table class="avoid">
+      <thead><tr><th>Customer Jobs / Pains</th><th>Pain Relievers / Gain Creators (SEHA)</th></tr></thead>
+      <tbody>
+        <tr><td>Dokumentasi lambat &amp; tercecer</td><td>SOAP low-click, RME terstruktur, laporan PDF 1-klik</td></tr>
+        <tr><td>Takut tidak patuh regulasi RME</td><td>Kepatuhan RME &amp; kesiapan SATUSEHAT bawaan</td></tr>
+        <tr><td>EMR lain mahal &amp; rumit</td><td>Harga terjangkau, onboarding cepat, mudah dipakai</td></tr>
+        <tr><td>Antrean &amp; stok kacau</td><td>Antrean adil, monitoring stok &amp; kadaluarsa</td></tr>
+        <tr><td>Ingin pantau performa praktik</td><td>Dashboard manajemen (pasien, keuangan, stok)</td></tr>
+      </tbody>
+    </table>
+    <h3>11.2 Pernyataan posisi (positioning statement)</h3>
+    <div class="callout">Untuk <b>praktik mandiri &amp; klinik kecil</b> yang membutuhkan kepatuhan RME tanpa kerumitan, <b>SEHA</b> adalah
+    sistem operasional klinik <b>paling sederhana &amp; terjangkau</b> yang mengembalikan waktu dokter untuk pasien — berbeda dari
+    EMR enterprise yang kompleks &amp; mahal.</div>
+    <h3>11.3 Strategi produk (build-measure-learn)</h3>
+    <ul>
+      <li><b>Now:</b> matangkan modul inti + hardening kepatuhan (Fase 1.5).</li>
+      <li><b>Next:</b> integrasi SATUSEHAT &amp; WhatsApp (Fase 2) sebagai pembeda &amp; sumber upsell.</li>
+      <li><b>Later:</b> self-service onboarding &amp; multi-cabang (Fase 3) untuk skala &amp; efisiensi CAC.</li>
+    </ul>
+  </div>
+
+  <!-- ===================== PART III ===================== -->
+  <div class="part pagebreak"><div class="k">Bagian III</div><h2>Model Bisnis &amp; Go-to-Market</h2></div>
+
+  <!-- 12. BMC -->
+  <div class="section avoid">
+    <h2>12. Business Model Canvas</h2>
+    <div class="bmc">
+      <div style="grid-row:span 2"><b>Key Partners</b>Cloud/hosting; penyedia SATUSEHAT/FHIR; asosiasi profesi; reseller regional; konsultan kepatuhan</div>
+      <div><b>Key Activities</b>Pengembangan produk; akuisisi &amp; onboarding klinik; dukungan; kepatuhan</div>
+      <div style="grid-row:span 2"><b>Value Propositions</b>Sistem klinik paling sederhana &amp; terjangkau; kepatuhan RME; KMS pediatri; dashboard manajemen; website publik</div>
+      <div><b>Customer Relationships</b>High-touch onboarding; dukungan WA/email; komunitas dokter; update berkelanjutan</div>
+      <div style="grid-row:span 2"><b>Customer Segments</b>Praktik mandiri dokter; klinik pratama kecil; <b>niche praktik anak</b>; (ekspansi: klinik utama)</div>
+      <div><b>Key Resources</b>Produk &amp; kode; tim Solo (CEO, BD, eng); merek; data &amp; integrasi</div>
+      <div><b>Channels</b>Penjualan langsung/demo; referral dokter; konten edukasi; asosiasi; website</div>
+      <div style="grid-column:span 2"><b>Cost Structure</b>Overhead general (gaji CEO+BD, Claude) Rp267,6jt/thn; COGS/klinik Rp8,6jt; CapEx build Rp108jt; pemasaran</div>
+      <div style="grid-column:span 3"><b>Revenue Streams</b>Langganan tahunan Rp14,4jt/klinik (all-in); onboarding Rp3jt; add-on Fase 2 (WhatsApp/SATUSEHAT/billing)</div>
+    </div>
+  </div>
+
+  <!-- 13. Pricing -->
+  <div class="section pagebreak">
+    <h2>13. Strategi Penetapan Harga</h2>
+    <h3>13.1 Filosofi: value-based, divalidasi cost-plus</h3>
+    <p>Harga ditetapkan dari <b>nilai bagi klinik</b> (bukan sekadar biaya). Manfaat terukur untuk satu praktik (efisiensi waktu,
+    recapture follow-up/imunisasi, pengurangan rugi stok, akurasi billing) ditaksir <b>±Rp14–18jt/tahun</b> — menjadikan harga
+    Rp14,4jt/tahun (≈2% omzet) sebagai <i>no-brainer</i>. Cost-plus memvalidasi keberlanjutan (lihat Bagian IV).</p>
+    <h3>13.2 Arsitektur paket (Good–Better–Best)</h3>
+    <table class="avoid">
+      <thead><tr><th>Paket</th><th>Untuk</th><th class="num">Harga/tahun</th><th>Inti</th></tr></thead>
+      <tbody>
+        <tr><td><b>Esensial</b></td><td>Praktik solo</td><td class="num">Rp10,8 jt</td><td>RME, antrean, kasir, laporan, reminder</td></tr>
+        <tr><td><b>Profesional</b> <span class="badge b-info">populer</span></td><td>Praktik anak / klinik kecil</td><td class="num">Rp14,4 jt</td><td>+ KMS, dashboard manajemen, website publik</td></tr>
+        <tr><td><b>Klinik+</b></td><td>Klinik pratama multi-staf</td><td class="num">Rp22–30 jt</td><td>+ multi-user lanjutan, prioritas dukungan, add-on</td></tr>
+      </tbody>
+    </table>
+    <h3>13.3 Taktik</h3>
+    <ul>
+      <li><b>Anchor</b> pada paket Profesional; arahkan mayoritas ke sana.</li>
+      <li><b>Founding partner</b> (pilot dr. Aisyah): onboarding gratis + diskon 25% tahun-1 + harga terkunci.</li>
+      <li><b>Annual prepaid</b> untuk arus kas; opsi cicilan 6-bulan.</li>
+      <li><b>Add-on Fase 2</b> sebagai jalur ekspansi pendapatan (menaikkan NRR).</li>
+      <li><b>Hindari perang harga</b> — sensitivitas menunjukkan diskon merusak break-even secara tajam (Bagian IV).</li>
+    </ul>
+  </div>
+
+  <!-- 13b. WTP & ROI -->
+  <div class="section avoid">
+    <h2>13b. Willingness-to-Pay &amp; Justifikasi ROI Klinik</h2>
+    <p>Pendekatan <i>value-based pricing</i> menuntut bukti bahwa harga &lt;&lt; nilai yang diterima klinik. Estimasi ROI tahunan untuk satu praktik:</p>
+    <table>
+      <thead><tr><th>Sumber nilai bagi klinik</th><th class="num">Estimasi/tahun</th></tr></thead>
+      <tbody>
+        <tr><td>Efisiensi waktu dokumentasi (±9 jam/bln, dialihkan ke pasien/kapasitas)</td><td class="num">Rp4–6 jt</td></tr>
+        <tr><td>Recapture follow-up &amp; imunisasi via reminder</td><td class="num">Rp5,4 jt</td></tr>
+        <tr><td>Pengurangan kerugian stok kadaluarsa</td><td class="num">Rp3,6 jt</td></tr>
+        <tr><td>Pengurangan kebocoran billing (±1% omzet)</td><td class="num">Rp5,4 jt</td></tr>
+        <tr><td>Nilai kepatuhan RME (hindari sanksi/akreditasi)</td><td class="num">Sulit dinilai, tinggi</td></tr>
+        <tr class="total"><td>Total nilai terukur</td><td class="num">±Rp18,4–20,4 jt</td></tr>
+      </tbody>
+    </table>
+    <h3>Koridor harga (Van Westendorp — kualitatif)</h3>
+    <table class="avoid">
+      <thead><tr><th>Titik harga</th><th class="num">Nilai/tahun</th><th>Persepsi</th></tr></thead>
+      <tbody>
+        <tr><td>Terlalu murah</td><td class="num">&lt;Rp6 jt</td><td>Diragukan kualitasnya</td></tr>
+        <tr><td>Murah / nilai bagus</td><td class="num">Rp10–14 jt</td><td>Menarik (zona penetrasi)</td></tr>
+        <tr><td><b>Optimal (base)</b></td><td class="num">Rp14,4 jt</td><td>Adil vs nilai ±Rp19jt</td></tr>
+        <tr><td>Mahal tapi layak</td><td class="num">Rp16–18 jt</td><td>Masih &lt; nilai (ruang naik)</td></tr>
+        <tr><td>Terlalu mahal</td><td class="num">&gt;Rp22 jt</td><td>Resistensi solo</td></tr>
+      </tbody>
+    </table>
+    <div class="callout"><b>Implikasi:</b> harga base Rp14,4jt hanya menangkap ±75% nilai terukur → terdapat <b>ruang menaikkan ARPU</b>
+    (paket Profesional/Klinik+, add-on) tanpa menembus plafon resistensi.</div>
+  </div>
+
+  <!-- 14. GTM -->
+  <div class="section">
+    <h2>14. Strategi Go-to-Market</h2>
+    <h3>14.1 Beachhead → ekspansi (Crossing the Chasm)</h3>
+    <ol>
+      <li><b>Beachhead:</b> praktik anak solo di Solo–Yogyakarta (fitur KMS = pembeda; jaringan rapat).</li>
+      <li><b>Bukti nilai:</b> studi kasus dr. Aisyah (efisiensi, kepatuhan, kepuasan orang tua).</li>
+      <li><b>Densifikasi regional:</b> referral dokter, komunitas IDAI/IDI lokal, word-of-mouth.</li>
+      <li><b>Ekspansi vertikal/geografis:</b> klinik pratama umum → kota lain di Jawa.</li>
+    </ol>
+    <h3>14.2 Sales motion &amp; funnel (model)</h3>
+    <table class="avoid">
+      <thead><tr><th>Tahap funnel</th><th class="num">Konversi (asumsi)</th><th>Aktivitas</th></tr></thead>
+      <tbody>
+        <tr><td>Lead (klinik tersentuh)</td><td class="num">100%</td><td>Konten, referral, outbound BD</td></tr>
+        <tr><td>Demo</td><td class="num">30%</td><td>Demo langsung di praktik</td></tr>
+        <tr><td>Trial/pilot</td><td class="num">50%</td><td>Uji coba terpandu</td></tr>
+        <tr><td>Berbayar (close)</td><td class="num">50%</td><td>Onboarding + kontrak</td></tr>
+        <tr class="total"><td>Lead → Bayar</td><td class="num">±7,5%</td><td>Perlu ±13 lead per 1 klinik</td></tr>
+      </tbody>
+    </table>
+    <h3>14.3 Kanal &amp; kemitraan</h3>
+    <ul>
+      <li><b>Direct + referral</b> (utama, CAC rendah): demo, rujukan dokter, komunitas profesi.</li>
+      <li><b>Konten edukasi</b> RME/SATUSEHAT (SEO, webinar) → inbound.</li>
+      <li><b>Kemitraan:</b> asosiasi profesi, distributor alkes, konsultan akreditasi.</li>
+      <li><b>Reseller regional</b> (Fase 3) untuk skala geografis.</li>
+    </ul>
+  </div>
+
+  <!-- 14b. CAC by channel -->
+  <div class="section avoid">
+    <h2>14b. Ekonomi Akuisisi per Kanal</h2>
+    <table>
+      <thead><tr><th>Kanal</th><th class="num">CAC (asumsi)</th><th class="num">Skala</th><th class="num">Payback</th><th>Catatan</th></tr></thead>
+      <tbody>
+        <tr><td>Referral dokter</td><td class="num">Rp1–2 jt</td><td class="num">Sedang</td><td class="num">&lt;5 bln</td><td>Termurah; andalan awal</td></tr>
+        <tr><td>Demo langsung (BD)</td><td class="num">Rp3–4 jt</td><td class="num">Sedang</td><td class="num">±7 bln</td><td>Konversi tinggi, intensif waktu</td></tr>
+        <tr><td>Konten/inbound (SEO, webinar)</td><td class="num">Rp2–3 jt</td><td class="num">Tinggi</td><td class="num">±6 bln</td><td>Skalabel, butuh waktu bertumbuh</td></tr>
+        <tr><td>Kemitraan/asosiasi</td><td class="num">Rp2–3 jt</td><td class="num">Tinggi</td><td class="num">±6 bln</td><td>Akses massal, butuh hubungan</td></tr>
+        <tr><td>Iklan berbayar</td><td class="num">Rp4–6 jt</td><td class="num">Tinggi</td><td class="num">±10 bln</td><td>Cadangan; CAC tertinggi</td></tr>
+        <tr class="total"><td>Blended (target)</td><td class="num">±Rp3 jt</td><td class="num">—</td><td class="num">±6 bln</td><td>Bauran referral + demo + konten</td></tr>
+      </tbody>
+    </table>
+    <div class="callout"><b>Strategi kanal:</b> mulai dari referral &amp; demo (CAC terendah, bukti nilai), lalu skalakan konten &amp; kemitraan;
+    iklan berbayar hanya pelengkap. Jaga blended CAC ≤Rp3jt untuk mempertahankan payback ±6 bulan.</div>
+  </div>
+
+  <!-- 15. Marketing & brand -->
+  <div class="section avoid">
+    <h2>15. Pemasaran &amp; Merek</h2>
+    <ul>
+      <li><b>Janji merek:</b> "Kembalikan Waktu Dokter untuk Pasien" — sederhana, cepat, patuh.</li>
+      <li><b>Pilar pesan:</b> (1) Termudah dipakai, (2) Patuh RME &amp; siap SATUSEHAT, (3) Terjangkau, (4) Ramah praktik anak.</li>
+      <li><b>Bukti sosial:</b> testimoni dr. Aisyah, metrik efisiensi, demo live publik (seha-clinic.vercel.app).</li>
+      <li><b>Konten:</b> panduan kepatuhan RME, checklist akreditasi, tips praktik anak → membangun otoritas &amp; inbound.</li>
+      <li><b>Komunitas:</b> grup dokter pengguna untuk retensi &amp; rujukan.</li>
+    </ul>
+  </div>
+
+  <!-- 16. Ops, tech, security -->
+  <div class="section">
+    <h2>16. Operasi, Teknologi &amp; Keamanan</h2>
+    <h3>16.1 Arsitektur</h3>
+    <p>Next.js 14 + TypeScript + Tailwind (frontend); basis data PostgreSQL terkelola; hosting cloud (Vercel/VPS) dengan auto-scaling;
+    integrasi HL7 FHIR untuk SATUSEHAT (Fase 2). Arsitektur multi-tenant untuk efisiensi biaya per klinik.</p>
+    <h3>16.2 Keamanan &amp; kepatuhan (prasyarat produksi)</h3>
+    <table class="avoid">
+      <thead><tr><th>Kontrol</th><th>Status</th><th>Rencana</th></tr></thead>
+      <tbody>
+        <tr><td>Autentikasi &amp; RBAC server-side</td><td><span class="badge b-warn">Belum</span></td><td>Fase 1.5</td></tr>
+        <tr><td>Enkripsi in-transit &amp; at-rest</td><td><span class="badge b-warn">Sebagian</span></td><td>Fase 1.5</td></tr>
+        <tr><td>Audit log &amp; jejak akses</td><td><span class="badge b-warn">Belum</span></td><td>Fase 1.5</td></tr>
+        <tr><td>Backup &amp; DR</td><td><span class="badge b-warn">Belum</span></td><td>Fase 1.5</td></tr>
+        <tr><td>Consent &amp; retensi data (PDP)</td><td><span class="badge b-warn">Belum</span></td><td>Fase 1.5</td></tr>
+      </tbody>
+    </table>
+    <h3>16.3 Model dukungan</h3>
+    <p>Onboarding terpandu (deploy, migrasi, pelatihan); dukungan WA/email jam kerja; SLA respons; update minor berkala.
+    Target: rasio dukungan efisien agar gross margin naik seiring skala.</p>
+  </div>
+
+  <!-- 17. Org & talent -->
+  <div class="section avoid">
+    <h2>17. Organisasi &amp; Talenta (Basis Solo)</h2>
+    <table>
+      <thead><tr><th>Peran</th><th>Tanggung jawab</th><th class="num">Thn 1</th><th class="num">Thn 3</th></tr></thead>
+      <tbody>
+        <tr><td>CEO</td><td>Strategi, kemitraan, fundraising</td><td class="num">1</td><td class="num">1</td></tr>
+        <tr><td>BD &amp; Product Strategy</td><td>Akuisisi, riset kebutuhan, arah produk</td><td class="num">1</td><td class="num">2</td></tr>
+        <tr><td>Engineering</td><td>Pengembangan &amp; pemeliharaan</td><td class="num">project</td><td class="num">2</td></tr>
+        <tr><td>Customer Success / Support</td><td>Onboarding &amp; dukungan</td><td class="num">—</td><td class="num">1–2</td></tr>
+        <tr><td>Marketing</td><td>Konten &amp; demand-gen</td><td class="num">—</td><td class="num">1</td></tr>
+      </tbody>
+    </table>
+    <p><b>Keunggulan biaya Solo:</b> struktur gaji jauh di bawah Jakarta menurunkan overhead &amp; mempercepat break-even — sebuah
+    <i>structural cost advantage</i> yang sulit ditiru pemain berbasis ibu kota.</p>
+  </div>
+
+  <!-- 17b. Hiring plan & cost -->
+  <div class="section avoid">
+    <h2>17b. Rencana Rekrutmen &amp; Ramp Biaya Tim (Basis Solo)</h2>
+    <table>
+      <thead><tr><th>Peran</th><th class="num">Gaji/bln (Solo)</th><th class="num">Thn 1</th><th class="num">Thn 2</th><th class="num">Thn 3</th></tr></thead>
+      <tbody>
+        <tr><td>CEO</td><td class="num">Rp12 jt</td><td class="num">1</td><td class="num">1</td><td class="num">1</td></tr>
+        <tr><td>BD &amp; Product Strategy</td><td class="num">Rp7 jt</td><td class="num">1</td><td class="num">1–2</td><td class="num">2</td></tr>
+        <tr><td>Engineer</td><td class="num">Rp9–12 jt</td><td class="num">proyek</td><td class="num">1</td><td class="num">2</td></tr>
+        <tr><td>Customer Success</td><td class="num">Rp5–6 jt</td><td class="num">—</td><td class="num">1</td><td class="num">1–2</td></tr>
+        <tr><td>Marketing</td><td class="num">Rp6–7 jt</td><td class="num">—</td><td class="num">paruh</td><td class="num">1</td></tr>
+        <tr class="total"><td>Total headcount</td><td class="num"></td><td class="num">±2,5</td><td class="num">±4,5</td><td class="num">±7</td></tr>
+      </tbody>
+    </table>
+    <p><b>Prinsip:</b> rekrut <i>just-in-time</i> menjelang break-even; pertahankan keunggulan biaya struktural Solo. Setiap penambahan
+    FTE harus dibenarkan oleh metrik (rasio dukungan, pipeline) — bukan pertumbuhan tim demi tim.</p>
+  </div>
+
+  <!-- ===================== PART IV ===================== -->
+  <div class="part pagebreak"><div class="k">Bagian IV</div><h2>Finansial &amp; Investasi</h2></div>
+
+  <!-- 18. Assumptions -->
+  <div class="section avoid">
+    <h2>18. Asumsi Kunci</h2>
+    <table>
+      <thead><tr><th>Parameter</th><th class="num">Nilai</th><th>Dasar</th></tr></thead>
+      <tbody>
+        <tr><td>Harga langganan (ARPU)</td><td class="num">Rp14,4 jt/thn</td><td>Value-based, ±2% omzet klinik</td></tr>
+        <tr><td>COGS langsung/klinik</td><td class="num">Rp8,6 jt/thn → turun</td><td>Infra + dukungan; membaik via skala</td></tr>
+        <tr><td>Gross margin</td><td class="num">40% → 60%</td><td>Amortisasi infra/support</td></tr>
+        <tr><td>CAC/klinik</td><td class="num">Rp3 jt</td><td>Penjualan BD/founder, basis Solo</td></tr>
+        <tr><td>Churn tahunan</td><td class="num">12%</td><td>Stickiness data; konservatif</td></tr>
+        <tr><td>Overhead general Thn 1</td><td class="num">Rp267,6 jt</td><td>CEO+BD+Claude (Solo)</td></tr>
+        <tr><td>CapEx build</td><td class="num">Rp108 jt</td><td>One-time, investasi</td></tr>
+        <tr><td>Diskonto (WACC proxy)</td><td class="num">20%</td><td>Risiko startup awal Indonesia</td></tr>
+        <tr><td>Kurs USD/IDR</td><td class="num">Rp16.500</td><td>Biaya Claude</td></tr>
+        <tr><td>Akuisisi gross (Thn 1–5)</td><td class="num">24/39/67/94/124</td><td>Ramp bertahap</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 19. Unit economics deep -->
+  <div class="section">
+    <h2>19. Ekonomi Unit (Mendalam)</h2>
+    <table class="avoid">
+      <thead><tr><th>Metrik</th><th class="num">SEHA</th><th class="num">Benchmark 2026</th><th class="num">Verdict</th></tr></thead>
+      <tbody>
+        <tr><td>ARPU (ARR/klinik)</td><td class="num">Rp14,4 jt</td><td class="num">—</td><td class="num">—</td></tr>
+        <tr><td>Gross margin</td><td class="num">40% → 60%</td><td class="num">70–85%</td><td class="num"><span class="badge b-warn">Naik</span></td></tr>
+        <tr><td>CAC</td><td class="num">Rp3 jt</td><td class="num">—</td><td class="num">—</td></tr>
+        <tr><td>Kontribusi/klinik/thn</td><td class="num">Rp5,8 jt</td><td class="num">—</td><td class="num">—</td></tr>
+        <tr><td>CAC payback</td><td class="num">±6 bln</td><td class="num">SMB &lt;12 bln</td><td class="num"><span class="badge b-safe">Elite</span></td></tr>
+        <tr><td>Churn tahunan / bulanan</td><td class="num">12% / ±1%</td><td class="num">bln &lt;2–3%</td><td class="num"><span class="badge b-safe">Baik</span></td></tr>
+        <tr><td>LTV (konservatif)</td><td class="num">±Rp48 jt</td><td class="num">—</td><td class="num">—</td></tr>
+        <tr><td>LTV : CAC</td><td class="num">±16 : 1</td><td class="num">3–5 : 1</td><td class="num"><span class="badge b-safe">Sangat baik*</span></td></tr>
+        <tr><td>NRR (Net Revenue Retention)</td><td class="num">±95% → 105%</td><td class="num">&gt;100% baik</td><td class="num"><span class="badge b-warn">Membaik via add-on</span></td></tr>
+        <tr><td>SaaS Magic Number</td><td class="num">&gt;3 (sangat tinggi)</td><td class="num">&gt;0,75 efisien</td><td class="num"><span class="badge b-info">Under-invested S&amp;M</span></td></tr>
+      </tbody>
+    </table>
+    <p class="muted" style="font-size:8.2pt">*LTV:CAC tinggi karena CAC rendah (penjualan founder/BD). Pada churn 20%, LTV ±Rp29jt → LTV:CAC ±10:1 (tetap kuat).
+    Magic number &gt;3 mengindikasikan S&amp;M <b>kurang-investasi</b> — peluang mempercepat pertumbuhan dengan menambah belanja akuisisi.</p>
+    <div class="callout"><b>Implikasi modal:</b> efisiensi akuisisi sangat tinggi → setiap Rupiah S&amp;M menghasilkan ARR besar. Strategi optimal:
+    <b>investasikan lebih agresif di akuisisi</b> begitu produk &amp; kepatuhan matang, untuk merebut pasar sebelum kompetitor.</div>
+  </div>
+
+  <!-- 20. Projections -->
+  <div class="section pagebreak">
+    <h2>20. Proyeksi Pendapatan &amp; Laba Rugi 5 Tahun</h2>
+    <h3>20.1 Build-up klinik (kohort, churn 12%)</h3>
+    <table class="avoid">
+      <thead><tr><th>Tahun</th><th class="num">Awal</th><th class="num">Akuisisi</th><th class="num">Churn</th><th class="num">Akhir</th><th class="num">Rata-rata</th><th class="num">ARR akhir (jt)</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td class="num">0</td><td class="num">24</td><td class="num">0</td><td class="num">24</td><td class="num">12</td><td class="num">345,6</td></tr>
+        <tr><td>2</td><td class="num">24</td><td class="num">39</td><td class="num">3</td><td class="num">60</td><td class="num">42</td><td class="num">864,0</td></tr>
+        <tr><td>3</td><td class="num">60</td><td class="num">67</td><td class="num">7</td><td class="num">120</td><td class="num">90</td><td class="num">1.728,0</td></tr>
+        <tr><td>4</td><td class="num">120</td><td class="num">94</td><td class="num">14</td><td class="num">200</td><td class="num">160</td><td class="num">2.880,0</td></tr>
+        <tr><td>5</td><td class="num">200</td><td class="num">124</td><td class="num">24</td><td class="num">300</td><td class="num">250</td><td class="num">4.320,0</td></tr>
+      </tbody>
+    </table>
+    <h3>20.2 Laporan Laba Rugi (Rp juta)</h3>
+    <table class="avoid">
+      <thead><tr><th>Akun</th><th class="num">Thn 1</th><th class="num">Thn 2</th><th class="num">Thn 3</th><th class="num">Thn 4</th><th class="num">Thn 5</th></tr></thead>
+      <tbody>
+        <tr><td>Pendapatan langganan</td><td class="num">172,8</td><td class="num">604,8</td><td class="num">1.296,0</td><td class="num">2.304,0</td><td class="num">3.600,0</td></tr>
+        <tr><td>COGS langsung</td><td class="num">(103,2)</td><td class="num">(336,0)</td><td class="num">(648,0)</td><td class="num">(1.040,0)</td><td class="num">(1.450,0)</td></tr>
+        <tr class="total"><td>Laba Kotor</td><td class="num">69,6</td><td class="num">268,8</td><td class="num">648,0</td><td class="num">1.264,0</td><td class="num">2.150,0</td></tr>
+        <tr><td>&nbsp;&nbsp;Gross margin</td><td class="num">40%</td><td class="num">44%</td><td class="num">50%</td><td class="num">55%</td><td class="num">60%</td></tr>
+        <tr><td>OpEx — S&amp;M</td><td class="num">(84,0)</td><td class="num">(120,0)</td><td class="num">(180,0)</td><td class="num">(260,0)</td><td class="num">(360,0)</td></tr>
+        <tr><td>OpEx — R&amp;D</td><td class="num">(40,0)</td><td class="num">(60,0)</td><td class="num">(120,0)</td><td class="num">(220,0)</td><td class="num">(360,0)</td></tr>
+        <tr><td>OpEx — G&amp;A</td><td class="num">(143,6)</td><td class="num">(180,0)</td><td class="num">(240,0)</td><td class="num">(300,0)</td><td class="num">(360,0)</td></tr>
+        <tr class="total"><td>Total OpEx</td><td class="num">(267,6)</td><td class="num">(360,0)</td><td class="num">(540,0)</td><td class="num">(780,0)</td><td class="num">(1.080,0)</td></tr>
+        <tr class="total"><td>EBITDA</td><td class="num">(198,0)</td><td class="num">(91,2)</td><td class="num">108,0</td><td class="num">484,0</td><td class="num">1.070,0</td></tr>
+        <tr><td>&nbsp;&nbsp;EBITDA margin</td><td class="num">−115%</td><td class="num">−15%</td><td class="num">8%</td><td class="num">21%</td><td class="num">30%</td></tr>
+        <tr><td>Rule of 40 (growth%+margin%)</td><td class="num">—</td><td class="num">235</td><td class="num">122</td><td class="num">99</td><td class="num">86</td></tr>
+      </tbody>
+    </table>
+    <p class="muted" style="font-size:8.2pt">OpEx Thn 1 = tiga komponen yang ditetapkan (CEO+BD+Claude = Rp267,6jt), dipetakan ke S&amp;M/R&amp;D/G&amp;A; tumbuh seiring penambahan tim. Rule of 40 terlampaui di seluruh tahun.</p>
+  </div>
+
+  <!-- 20.3 ARR waterfall & cohort -->
+  <div class="section avoid">
+    <h2>20b. ARR Waterfall &amp; Retensi Kohort</h2>
+    <h3>20b.1 Jembatan ARR (Rp juta, berbasis klinik aktif akhir tahun × Rp14,4jt)</h3>
+    <table>
+      <thead><tr><th>Komponen</th><th class="num">Thn 1</th><th class="num">Thn 2</th><th class="num">Thn 3</th><th class="num">Thn 4</th><th class="num">Thn 5</th></tr></thead>
+      <tbody>
+        <tr><td>ARR awal</td><td class="num">0</td><td class="num">345,6</td><td class="num">864,0</td><td class="num">1.728,0</td><td class="num">2.880,0</td></tr>
+        <tr class="pos"><td>+ New ARR (akuisisi)</td><td class="num">345,6</td><td class="num">561,6</td><td class="num">964,8</td><td class="num">1.353,6</td><td class="num">1.785,6</td></tr>
+        <tr class="neg"><td>− Churned ARR (12%)</td><td class="num">0</td><td class="num">(43,2)</td><td class="num">(100,8)</td><td class="num">(201,6)</td><td class="num">(345,6)</td></tr>
+        <tr class="total"><td>ARR akhir</td><td class="num">345,6</td><td class="num">864,0</td><td class="num">1.728,0</td><td class="num">2.880,0</td><td class="num">4.320,0</td></tr>
+        <tr><td>Pertumbuhan ARR</td><td class="num">—</td><td class="num">150%</td><td class="num">100%</td><td class="num">67%</td><td class="num">50%</td></tr>
+      </tbody>
+    </table>
+    <h3>20b.2 Retensi logo kohort (churn 12%/thn)</h3>
+    <table>
+      <thead><tr><th>Kohort</th><th class="num">Thn 0</th><th class="num">+1</th><th class="num">+2</th><th class="num">+3</th><th class="num">Retensi 3-thn</th></tr></thead>
+      <tbody>
+        <tr><td>Kohort A (Thn 1)</td><td class="num">100%</td><td class="num">88%</td><td class="num">77%</td><td class="num">68%</td><td class="num">68%</td></tr>
+        <tr><td>Kohort B (Thn 2)</td><td class="num">100%</td><td class="num">88%</td><td class="num">77%</td><td class="num">—</td><td class="num">—</td></tr>
+      </tbody>
+    </table>
+    <p class="muted" style="font-size:8.6pt">Retensi 3 tahun ±68% pada churn 12% — wajar untuk SMB. Peningkatan retensi (mis. via add-on &amp; nilai dashboard) berdampak besar ke LTV &amp; NRR.</p>
+  </div>
+
+  <!-- 21. Cash flow & break-even -->
+  <div class="section avoid">
+    <h2>21. Arus Kas Kumulatif &amp; Break-even</h2>
+    <div class="grid2">
+      <table>
+        <thead><tr><th>Periode</th><th class="num">Arus kas</th><th class="num">Kumulatif</th></tr></thead>
+        <tbody>
+          <tr class="neg"><td>Thn 0 (build)</td><td class="num">(108,0)</td><td class="num">(108,0)</td></tr>
+          <tr class="neg"><td>Tahun 1</td><td class="num">(198,0)</td><td class="num">(306,0)</td></tr>
+          <tr class="neg"><td>Tahun 2 (trough)</td><td class="num">(91,2)</td><td class="num">(397,2)</td></tr>
+          <tr><td>Tahun 3</td><td class="num">108,0</td><td class="num">(289,2)</td></tr>
+          <tr class="pos"><td>Tahun 4 (modal kembali)</td><td class="num">484,0</td><td class="num">194,8</td></tr>
+          <tr class="pos"><td>Tahun 5</td><td class="num">1.070,0</td><td class="num">1.264,8</td></tr>
+        </tbody>
+      </table>
+      <table>
+        <thead><tr><th>Break-even</th><th class="num">Hasil</th></tr></thead>
+        <tbody>
+          <tr><td>Jumlah klinik (operasional)</td><td class="num">±47</td></tr>
+          <tr><td>Waktu break-even operasional</td><td class="num">Pertengahan Thn 2</td></tr>
+          <tr><td>EBITDA positif (tahunan)</td><td class="num">Tahun 3</td></tr>
+          <tr><td>Cumulative cash positive</td><td class="num">Tahun 4</td></tr>
+          <tr><td>Puncak kebutuhan kas</td><td class="num">±Rp397 jt</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 22. Funding -->
+  <div class="section avoid">
+    <h2>22. Kebutuhan Pendanaan &amp; Use of Funds</h2>
+    <p><b>Permintaan modal (Seed/Pre-seed): Rp450 juta</b> (puncak kas Rp397jt + buffer). Memberi runway hingga break-even (Tahun 2–3).</p>
+    <table>
+      <thead><tr><th>Alokasi dana</th><th class="num">%</th><th class="num">Rp juta</th><th>Untuk</th></tr></thead>
+      <tbody>
+        <tr><td>Pengembangan produk &amp; hardening</td><td class="num">30%</td><td class="num">135</td><td>Kepatuhan PDP/RME, SATUSEHAT-ready</td></tr>
+        <tr><td>Tim &amp; operasional</td><td class="num">50%</td><td class="num">225</td><td>Gaji s/d break-even</td></tr>
+        <tr><td>Pemasaran &amp; akuisisi</td><td class="num">15%</td><td class="num">67,5</td><td>Demand-gen, demo, konten</td></tr>
+        <tr><td>Cadangan</td><td class="num">5%</td><td class="num">22,5</td><td>Buffer risiko</td></tr>
+        <tr class="total"><td>Total</td><td class="num">100%</td><td class="num">450</td><td></td></tr>
+      </tbody>
+    </table>
+    <p class="muted">Opsi <b>Series A</b> (Fase 3, ±Rp2–3 miliar) untuk skala nasional &amp; self-service onboarding — di luar lingkup runway dasar.</p>
+  </div>
+
+  <!-- 23. Valuation -->
+  <div class="section">
+    <h2>23. Valuasi &amp; Imbal Hasil Investasi</h2>
+    <h3>23.1 DCF (FCF ≈ EBITDA; diskonto 20%)</h3>
+    <table class="avoid">
+      <thead><tr><th>Tahun</th><th class="num">FCF (Rp jt)</th><th class="num">DF @20%</th><th class="num">PV (Rp jt)</th></tr></thead>
+      <tbody>
+        <tr><td>0</td><td class="num">(108,0)</td><td class="num">1,000</td><td class="num">(108,0)</td></tr>
+        <tr><td>1</td><td class="num">(198,0)</td><td class="num">0,833</td><td class="num">(165,0)</td></tr>
+        <tr><td>2</td><td class="num">(91,2)</td><td class="num">0,694</td><td class="num">(63,3)</td></tr>
+        <tr><td>3</td><td class="num">108,0</td><td class="num">0,579</td><td class="num">62,5</td></tr>
+        <tr><td>4</td><td class="num">484,0</td><td class="num">0,482</td><td class="num">233,4</td></tr>
+        <tr><td>5</td><td class="num">1.070,0</td><td class="num">0,402</td><td class="num">430,0</td></tr>
+        <tr class="total"><td>NPV @20%</td><td class="num"></td><td class="num"></td><td class="num">+389,6</td></tr>
+      </tbody>
+    </table>
+    <div class="grid4 avoid" style="margin:4px 0">
+      <div class="kpi"><div class="l">NPV @20%</div><div class="v">+Rp390 jt</div></div>
+      <div class="kpi"><div class="l">IRR (5 thn)</div><div class="v">±48%</div></div>
+      <div class="kpi"><div class="l">Payback kumulatif</div><div class="v">Tahun 4</div></div>
+      <div class="kpi"><div class="l">MOIC investor (≈)</div><div class="v">±7–8×</div></div>
+    </div>
+    <h3>23.2 Valuasi pembanding (ARR multiple)</h3>
+    <table class="avoid">
+      <thead><tr><th>Titik</th><th class="num">ARR (Rp jt)</th><th class="num">Multiple 3×</th><th class="num">Multiple 4×</th><th class="num">Multiple 6×</th></tr></thead>
+      <tbody>
+        <tr><td>Akhir Thn 3</td><td class="num">1.728</td><td class="num">Rp5,2 M</td><td class="num">Rp6,9 M</td><td class="num">Rp10,4 M</td></tr>
+        <tr><td>Akhir Thn 5</td><td class="num">4.320</td><td class="num">Rp13,0 M</td><td class="num">Rp17,3 M</td><td class="num">Rp25,9 M</td></tr>
+      </tbody>
+    </table>
+    <p class="muted" style="font-size:8.3pt">Ilustrasi return investor: Seed Rp450jt untuk ±20% ekuitas → nilai bagian @Thn 5 (multiple 4×) ±Rp3,46 miliar → MOIC ±7,7× (IRR ±50%).
+    Multiple aktual bergantung pertumbuhan, NRR, &amp; kondisi pasar.</p>
+  </div>
+
+  <!-- 24. Scenario & sensitivity -->
+  <div class="section pagebreak">
+    <h2>24. Analisis Skenario &amp; Sensitivitas</h2>
+    <h3>24.1 Skenario</h3>
+    <table class="avoid">
+      <thead><tr><th>Parameter</th><th class="num">Bear</th><th class="num">Base</th><th class="num">Bull</th></tr></thead>
+      <tbody>
+        <tr><td>Akuisisi (vs base)</td><td class="num">0,5×</td><td class="num">1,0×</td><td class="num">1,5×</td></tr>
+        <tr><td>Churn tahunan</td><td class="num">20%</td><td class="num">12%</td><td class="num">8%</td></tr>
+        <tr><td>Klinik akhir Thn 5</td><td class="num">±150</td><td class="num">300</td><td class="num">±480</td></tr>
+        <tr><td>Break-even</td><td class="num">Thn 4</td><td class="num">Thn 2–3</td><td class="num">Thn 2</td></tr>
+        <tr><td>Puncak kebutuhan modal</td><td class="num">±Rp650 jt</td><td class="num">±Rp450 jt</td><td class="num">±Rp300 jt</td></tr>
+        <tr><td>EBITDA Thn 5</td><td class="num">±Rp350 jt</td><td class="num">Rp1.070 jt</td><td class="num">±Rp1.900 jt</td></tr>
+        <tr><td>NPV @20%</td><td class="num">±+Rp80 jt</td><td class="num">+Rp390 jt</td><td class="num">±+Rp850 jt</td></tr>
+      </tbody>
+    </table>
+    <p class="muted">Bahkan skenario bear tetap NPV-positif &amp; profitabel (Thn 4) — risiko utama adalah ukuran runway, bukan kelangsungan model.</p>
+    <h3>24.2 Sensitivitas break-even klinik (tornado)</h3>
+    <table class="avoid">
+      <thead><tr><th>Perubahan variabel</th><th class="num">Kontribusi/klinik</th><th class="num">Break-even klinik</th><th class="num">Δ</th></tr></thead>
+      <tbody>
+        <tr><td>Harga +20%</td><td class="num">Rp8,68 jt</td><td class="num">31</td><td class="num"><span class="badge b-safe">−16</span></td></tr>
+        <tr><td>COGS −20%</td><td class="num">Rp7,52 jt</td><td class="num">36</td><td class="num"><span class="badge b-safe">−11</span></td></tr>
+        <tr><td><b>Base</b></td><td class="num">Rp5,80 jt</td><td class="num">47</td><td class="num">—</td></tr>
+        <tr><td>Overhead +20%</td><td class="num">Rp5,80 jt</td><td class="num">55</td><td class="num"><span class="badge b-warn">+8</span></td></tr>
+        <tr><td>Harga −20%</td><td class="num">Rp2,92 jt</td><td class="num">92</td><td class="num"><span class="badge b-danger">+45</span></td></tr>
+      </tbody>
+    </table>
+    <div class="callout"><b>Insight:</b> <b>harga</b> adalah tuas paling kuat (jauh melebihi overhead). Implikasi: jaga disiplin harga, hindari diskon agresif,
+    dan dorong nilai/ARPU naik (paket, add-on) ketimbang memangkas harga.</div>
+  </div>
+
+  <!-- 24.3 Two-variable sensitivity -->
+  <div class="section avoid">
+    <h2>24b. Sensitivitas Dua-Variabel: EBITDA Tahunan (Rp juta)</h2>
+    <p class="muted" style="font-size:8.8pt">EBITDA tahunan = (klinik × kontribusi pada harga tsb) − overhead Rp267,6jt. Menunjukkan interaksi <b>harga × jumlah klinik</b>.</p>
+    <table>
+      <thead><tr><th>Harga \ Klinik</th><th class="num">25</th><th class="num">50</th><th class="num">75</th><th class="num">100</th><th class="num">150</th></tr></thead>
+      <tbody>
+        <tr><td>Rp11,52 jt (−20%)</td><td class="num heat-H">(195)</td><td class="num heat-H">(122)</td><td class="num heat-M">(49)</td><td class="num heat-M">24</td><td class="num heat-L">170</td></tr>
+        <tr><td>Rp12,96 jt (−10%)</td><td class="num heat-H">(159)</td><td class="num heat-M">(50)</td><td class="num heat-M">59</td><td class="num heat-L">169</td><td class="num heat-L">387</td></tr>
+        <tr><td><b>Rp14,4 jt (base)</b></td><td class="num heat-H">(123)</td><td class="num heat-M">22</td><td class="num heat-L">167</td><td class="num heat-L">312</td><td class="num heat-L">602</td></tr>
+        <tr><td>Rp15,84 jt (+10%)</td><td class="num heat-M">(86)</td><td class="num heat-L">95</td><td class="num heat-L">276</td><td class="num heat-L">456</td><td class="num heat-L">818</td></tr>
+        <tr><td>Rp17,28 jt (+20%)</td><td class="num heat-M">(50)</td><td class="num heat-L">167</td><td class="num heat-L">384</td><td class="num heat-L">601</td><td class="num heat-L">1.035</td></tr>
+      </tbody>
+    </table>
+    <div class="callout"><b>Pembacaan:</b> sel hijau = EBITDA positif. Pada harga base, profitabilitas tahunan tercapai sekitar <b>47 klinik</b>;
+    kenaikan harga 10–20% memperluas zona hijau secara signifikan, menegaskan <b>harga sebagai tuas nilai utama</b>.</div>
+  </div>
+
+  <!-- ===================== PART V ===================== -->
+  <div class="part pagebreak"><div class="k">Bagian V</div><h2>Risiko &amp; Eksekusi</h2></div>
+
+  <!-- 25. Feasibility -->
+  <div class="section avoid">
+    <h2>25. Penilaian Kelayakan (Detail)</h2>
+    <table>
+      <thead><tr><th>Dimensi</th><th class="num">Putusan</th><th>Bukti</th><th>Prasyarat</th></tr></thead>
+      <tbody>
+        <tr><td>Teknis</td><td class="num"><span class="badge b-safe">Sangat Layak</span></td><td>Prototype 17 halaman live; stack matang</td><td>—</td></tr>
+        <tr><td>Operasional</td><td class="num"><span class="badge b-safe">Layak</span></td><td>Low-click; onboarding ringan</td><td>SOP &amp; pelatihan</td></tr>
+        <tr><td>Pasar</td><td class="num"><span class="badge b-safe">Layak</span></td><td>TAM Rp332M; mandat RME</td><td>Validasi WTP lapangan</td></tr>
+        <tr><td>Finansial</td><td class="num"><span class="badge b-safe">Layak</span></td><td>NPV+, IRR ±48%, LTV:CAC ±16:1</td><td>Runway Rp450jt</td></tr>
+        <tr><td>Hukum</td><td class="num"><span class="badge b-warn">Bersyarat</span></td><td>Mendukung RME</td><td>Hardening PDP/keamanan</td></tr>
+        <tr><td>Eksekusi/GTM</td><td class="num"><span class="badge b-warn">Kritis</span></td><td>Pilot dr. Aisyah</td><td>Mesin akuisisi terbukti</td></tr>
+        <tr><td>Jadwal</td><td class="num"><span class="badge b-safe">Layak</span></td><td>MVP siap; iterasi cepat</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 26. Risk register -->
+  <div class="section avoid pagebreak">
+    <h2>26. Risk Register &amp; Matriks (Probabilitas × Dampak)</h2>
+    <table>
+      <thead><tr><th>#</th><th>Risiko</th><th class="num">Prob.</th><th class="num">Dampak</th><th class="num">Skor</th><th>Mitigasi &amp; pemilik</th></tr></thead>
+      <tbody>
+        <tr><td>R1</td><td>Akuisisi klinik lambat</td><td class="num heat-M">Sedang</td><td class="num heat-H">Tinggi</td><td class="num heat-H">9</td><td>Pilot kuat, referral, fokus regional — BD</td></tr>
+        <tr><td>R2</td><td>Runway/pendanaan kurang</td><td class="num heat-M">Sedang</td><td class="num heat-H">Tinggi</td><td class="num heat-H">9</td><td>Overhead Solo, milestone funding — CEO</td></tr>
+        <tr><td>R3</td><td>Kepatuhan PDP/RME &amp; insiden data</td><td class="num heat-M">Sedang</td><td class="num heat-H">Tinggi</td><td class="num heat-H">9</td><td>Hardening, audit, asuransi siber — Eng</td></tr>
+        <tr><td>R4</td><td>Gross margin rendah persisten</td><td class="num heat-H">Tinggi</td><td class="num heat-M">Sedang</td><td class="num heat-M">6</td><td>Otomasi support, naikkan ARPU — Eng/CEO</td></tr>
+        <tr><td>R5</td><td>Kompetitor bermodal besar masuk niche</td><td class="num heat-M">Sedang</td><td class="num heat-M">Sedang</td><td class="num heat-M">4</td><td>Moat: stickiness, SATUSEHAT, merek — CEO</td></tr>
+        <tr><td>R6</td><td>Ketergantungan engineering tunggal</td><td class="num heat-M">Sedang</td><td class="num heat-M">Sedang</td><td class="num heat-M">4</td><td>Dokumentasi, rekrut bertahap — CEO</td></tr>
+        <tr><td>R7</td><td>Adopsi/disiplin input data kurang</td><td class="num heat-M">Sedang</td><td class="num heat-M">Sedang</td><td class="num heat-M">4</td><td>UX low-click, indikator kelengkapan — Eng</td></tr>
+        <tr><td>R8</td><td>Risiko kurs (biaya USD Claude)</td><td class="num heat-H">Tinggi</td><td class="num heat-L">Rendah</td><td class="num heat-L">2</td><td>Porsi kecil; substitusi — CEO</td></tr>
+      </tbody>
+    </table>
+    <p class="muted" style="font-size:8.2pt">Skor = Prob (1–3) × Dampak (1–3). Tiga risiko teratas (R1–R3) wajib dimonitor mingguan.</p>
+  </div>
+
+  <!-- 27. Roadmap, 90-day, OKR -->
+  <div class="section">
+    <h2>27. Roadmap, Rencana 90 Hari &amp; OKR</h2>
+    <h3>27.1 Roadmap fase</h3>
+    <table class="avoid">
+      <thead><tr><th>Fase</th><th>Fokus</th><th>Hasil kunci</th></tr></thead>
+      <tbody>
+        <tr><td>Fase 1 — MVP (selesai)</td><td>Operasional inti + RME + KMS + kasir + dashboard + website</td><td>Prototype live</td></tr>
+        <tr><td>Fase 1.5 — Hardening</td><td>Auth, DB, enkripsi, audit, backup, PDP</td><td>Siap data nyata</td></tr>
+        <tr><td>Fase 2 — Automasi</td><td>SATUSEHAT, WhatsApp, billing lanjutan</td><td>Pembeda + upsell (NRR↑)</td></tr>
+        <tr><td>Fase 3 — Skala</td><td>Self-service onboarding, multi-cabang</td><td>CAC↓, ekspansi nasional</td></tr>
+      </tbody>
+    </table>
+    <h3>27.2 Rencana 90 hari (eksekusi awal)</h3>
+    <table class="avoid">
+      <thead><tr><th>Bulan</th><th>Prioritas</th></tr></thead>
+      <tbody>
+        <tr><td>Bulan 1</td><td>Go-live pilot dr. Aisyah; mulai hardening keamanan; siapkan studi kasus</td></tr>
+        <tr><td>Bulan 2</td><td>Kumpulkan bukti nilai (metrik efisiensi); bangun playbook penjualan; 5 demo pertama</td></tr>
+        <tr><td>Bulan 3</td><td>Tutup 3–5 klinik berbayar; galang Seed Rp450jt; rilis kepatuhan PDP dasar</td></tr>
+      </tbody>
+    </table>
+    <h3>27.3 OKR Tahun 1</h3>
+    <table class="avoid">
+      <thead><tr><th>Objective</th><th>Key Results</th></tr></thead>
+      <tbody>
+        <tr><td>O1: Buktikan product-market fit</td><td>KR1 24 klinik berbayar · KR2 NPS &gt;40 · KR3 churn &lt;15%</td></tr>
+        <tr><td>O2: Bangun mesin akuisisi repeatable</td><td>KR1 konversi lead→bayar ≥7% · KR2 CAC ≤Rp3jt · KR3 playbook terdokumentasi</td></tr>
+        <tr><td>O3: Siap kepatuhan &amp; skala</td><td>KR1 hardening PDP/RME selesai · KR2 desain SATUSEHAT siap · KR3 runway ≥12 bln</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 27c. Implementation timeline -->
+  <div class="section avoid">
+    <h2>27c. Linimasa Implementasi 18 Bulan (Gantt)</h2>
+    <table>
+      <thead><tr><th>Aktivitas</th><th class="num">Q1</th><th class="num">Q2</th><th class="num">Q3</th><th class="num">Q4</th><th class="num">Q5</th><th class="num">Q6</th></tr></thead>
+      <tbody>
+        <tr><td>Pilot dr. Aisyah &amp; studi kasus</td><td class="num heat-L">●</td><td class="num heat-L">●</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr>
+        <tr><td>Hardening kepatuhan (PDP/RME)</td><td class="num heat-M">●</td><td class="num heat-M">●</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr>
+        <tr><td>Galang Seed Rp450jt</td><td class="num"></td><td class="num heat-M">●</td><td class="num heat-M">●</td><td class="num"></td><td class="num"></td><td class="num"></td></tr>
+        <tr><td>Bangun mesin akuisisi (playbook)</td><td class="num"></td><td class="num heat-L">●</td><td class="num heat-L">●</td><td class="num heat-L">●</td><td class="num"></td><td class="num"></td></tr>
+        <tr><td>Skala ke 24 klinik (Thn 1)</td><td class="num"></td><td class="num"></td><td class="num heat-L">●</td><td class="num heat-L">●</td><td class="num heat-L">●</td><td class="num heat-L">●</td></tr>
+        <tr><td>Integrasi SATUSEHAT (Fase 2)</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num heat-M">●</td><td class="num heat-M">●</td><td class="num heat-M">●</td></tr>
+        <tr><td>Persiapan break-even (≥47 klinik)</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num heat-L">●</td><td class="num heat-L">●</td></tr>
+      </tbody>
+    </table>
+    <p class="muted" style="font-size:8.6pt">● = aktivitas berjalan pada kuartal tersebut. Linimasa selaras dengan roadmap fase &amp; OKR.</p>
+  </div>
+
+  <!-- 28. How to win -->
+  <div class="section avoid pagebreak">
+    <h2>28. Sintesis Strategis: How to Win in Indonesia</h2>
+    <p class="lead">Kemenangan SEHA bertumpu pada <b>empat pilar</b> yang saling menguatkan:</p>
+    <div class="grid2">
+      <div class="card"><h4>1. Menang di niche dulu (Beachhead)</h4><p>Dominasi praktik anak/pediatri solo di Solo–DIY via KMS &amp; advokasi orang tua, sebelum melebar. Fokus mengalahkan generalis.</p></div>
+      <div class="card"><h4>2. Friksi adopsi terendah</h4><p>Harga termurah + kemudahan tertinggi + onboarding tercepat. Setiap hambatan beli dihapus (Blue Ocean ERRC).</p></div>
+      <div class="card"><h4>3. Jadikan regulasi sebagai mesin jual</h4><p>Posisikan SEHA sebagai jalan termudah menuju kepatuhan RME &amp; kesiapan SATUSEHAT — ubah kewajiban jadi urgensi beli.</p></div>
+      <div class="card"><h4>4. Bangun moat &amp; efisiensi modal</h4><p>Data lock-in, integrasi SATUSEHAT, merek, jaringan rujukan; manfaatkan biaya Solo &amp; unit economics elite untuk tumbuh efisien.</p></div>
+    </div>
+    <div class="callout"><b>Tiga gerakan 12 bulan ke depan:</b> (1) ubah pilot dr. Aisyah menjadi mesin bukti-nilai; (2) galang Rp450jt &amp; selesaikan hardening kepatuhan;
+    (3) bangun playbook akuisisi yang repeatable menuju 47 klinik (break-even). Eksekusi &gt; strategi — disiplin akuisisi adalah penentu.</div>
+    <h3>Kesimpulan</h3>
+    <p><b>GO.</b> SEHA memiliki pasar besar berpendorong regulasi, ekonomi unit kelas elite, dan posisi blue-ocean yang dapat dipertahankan.
+    Dengan modal ±Rp450jt dan eksekusi akuisisi yang disiplin, proyek mencapai break-even di Tahun 2–3, profitabilitas di Tahun 3,
+    NPV +Rp390jt &amp; IRR ±48% dalam 5 tahun — sambil membangun fondasi untuk menjadi pemimpin kategori "klinik sederhana" di Indonesia.</p>
+  </div>
+
+  <!-- 27b. KPI dashboard -->
+  <div class="section avoid">
+    <h2>27b. KPI Dashboard yang Dipantau</h2>
+    <table>
+      <thead><tr><th>Kategori</th><th>KPI</th><th>Target Thn 1</th><th>Frekuensi</th></tr></thead>
+      <tbody>
+        <tr><td>Pertumbuhan</td><td>Klinik berbayar aktif, New ARR</td><td>24 klinik</td><td>Mingguan</td></tr>
+        <tr><td>Akuisisi</td><td>Konversi lead→bayar, CAC, jumlah demo</td><td>≥7%, ≤Rp3jt</td><td>Mingguan</td></tr>
+        <tr><td>Retensi</td><td>Churn, NRR, NPS</td><td>&lt;15%, NPS &gt;40</td><td>Bulanan</td></tr>
+        <tr><td>Ekonomi</td><td>Gross margin, CAC payback, LTV:CAC</td><td>≥40%, &lt;9 bln</td><td>Bulanan</td></tr>
+        <tr><td>Kas</td><td>Burn rate, runway (bulan)</td><td>Runway ≥12 bln</td><td>Bulanan</td></tr>
+        <tr><td>Produk/Operasi</td><td>Uptime, waktu onboarding, tiket dukungan</td><td>&gt;99%, &lt;3 minggu</td><td>Mingguan</td></tr>
+        <tr><td>Kepatuhan</td><td>Status hardening PDP/RME, insiden data</td><td>Selesai, 0 insiden</td><td>Bulanan</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 28b. Exit options -->
+  <div class="section avoid">
+    <h2>28b. Opsi Strategis &amp; Exit (Jangka Panjang)</h2>
+    <table>
+      <thead><tr><th>Opsi</th><th>Deskripsi</th><th class="num">Kelayakan</th></tr></thead>
+      <tbody>
+        <tr><td>Akuisisi strategis</td><td>Dibeli pemain health-tech/SIM lebih besar untuk basis klinik &amp; tim</td><td class="num"><span class="badge b-safe">Tinggi</span></td></tr>
+        <tr><td>Merger / roll-up</td><td>Konsolidasi dengan vendor regional komplementer</td><td class="num"><span class="badge b-warn">Sedang</span></td></tr>
+        <tr><td>Bisnis mandiri (cash-flow)</td><td>Tumbuh profitabel sebagai bisnis berkelanjutan tanpa exit</td><td class="num"><span class="badge b-safe">Tinggi</span></td></tr>
+        <tr><td>Pendanaan lanjut (Series A)</td><td>Skala nasional &amp; produk lanjutan</td><td class="num"><span class="badge b-warn">Bergantung traksi</span></td></tr>
+        <tr><td>IPO</td><td>Tidak realistis pada skala/horizon ini</td><td class="num"><span class="badge b-danger">Rendah</span></td></tr>
+      </tbody>
+    </table>
+    <p class="muted">Basis pelanggan ber-stickiness tinggi &amp; kepatuhan menjadi aset paling menarik bagi akuirer strategis.</p>
+  </div>
+
+  <!-- 28c. ESG / impact -->
+  <div class="section avoid">
+    <h2>28c. Dampak Sosial &amp; Keberlanjutan (ESG)</h2>
+    <ul>
+      <li><b>Akses kesehatan:</b> mendigitalkan praktik kecil meningkatkan mutu &amp; kontinuitas layanan, termasuk imunisasi &amp; tumbuh kembang anak.</li>
+      <li><b>Kepatuhan &amp; keselamatan data:</b> mendorong perlindungan data pasien (PDP) di fasilitas yang sebelumnya manual.</li>
+      <li><b>Efisiensi &amp; paperless:</b> mengurangi penggunaan kertas &amp; pemborosan operasional.</li>
+      <li><b>Pemberdayaan ekonomi daerah:</b> tim &amp; lapangan kerja berbasis Solo.</li>
+      <li><b>Kesiapan sistem nasional:</b> mempercepat onboarding klinik ke SATUSEHAT.</li>
+    </ul>
+  </div>
+
+  <!-- 29. Appendix -->
+  <div class="section avoid">
+    <h2>29. Lampiran, Glosarium &amp; Referensi</h2>
+    <h3>29.1 Glosarium metrik</h3>
+    <table class="avoid">
+      <thead><tr><th>Istilah</th><th>Definisi</th></tr></thead>
+      <tbody>
+        <tr><td>TAM/SAM/SOM</td><td>Total / Serviceable Available / Serviceable Obtainable Market</td></tr>
+        <tr><td>ARPU / ARR / MRR</td><td>Average Revenue per Unit / Annual / Monthly Recurring Revenue</td></tr>
+        <tr><td>CAC</td><td>Customer Acquisition Cost — biaya akuisisi per pelanggan</td></tr>
+        <tr><td>LTV</td><td>Lifetime Value = ARPU × gross margin ÷ churn</td></tr>
+        <tr><td>CAC payback</td><td>Waktu memulihkan CAC dari kontribusi pelanggan</td></tr>
+        <tr><td>NRR</td><td>Net Revenue Retention — retensi termasuk ekspansi/kontraksi</td></tr>
+        <tr><td>Magic Number</td><td>Net new ARR ÷ S&amp;M periode sebelumnya (efisiensi penjualan)</td></tr>
+        <tr><td>Rule of 40</td><td>Growth% + profit margin% ≥ 40 (keseimbangan tumbuh-untung)</td></tr>
+        <tr><td>NPV / IRR / MOIC</td><td>Net Present Value / Internal Rate of Return / Multiple on Invested Capital</td></tr>
+      </tbody>
+    </table>
+    <h3>29.2 Sumber &amp; referensi</h3>
+    <ol class="ref">
+      <li>Kementerian Kesehatan RI — Profil Kesehatan Indonesia 2024 (jumlah klinik pratama 14.564; klinik utama 2.697; swasta 15.311; TPMD 8.465; TPMDG 3.946).</li>
+      <li>UU No. 17/2023 tentang Kesehatan; Permenkes No. 24/2022 (Rekam Medis Elektronik); UU No. 27/2022 (Pelindungan Data Pribadi).</li>
+      <li>SATUSEHAT (Kemenkes) — platform interoperabilitas; standar HL7 FHIR / SNOMED CT.</li>
+      <li>Riset pasar EMR Asia-Pasifik (CAGR ±6,2%, 2025–2032) — Data Bridge Market Research; Mordor Intelligence.</li>
+      <li>Benchmark SaaS 2026 (LTV:CAC 3–5:1; CAC payback SMB &lt;12 bln; gross margin 70–85%; Rule of 40; churn) — Phoenix Strategy Group; Beancount.io; Eagle Rock CFO.</li>
+      <li>Kerangka strategi: M. Porter (Five Forces); Kim &amp; Mauborgne (Blue Ocean/ERRC); Osterwalder (Business Model &amp; Value Proposition Canvas); G. Moore (Crossing the Chasm).</li>
+    </ol>
+    <h3>29.3 Catatan keterbatasan</h3>
+    <p class="muted" style="font-size:8.3pt">Proyeksi bersifat asumsi yang dieksplisitkan untuk perencanaan &amp; penggalangan modal; bukan jaminan kinerja. Profil kompetitor indikatif &amp; memerlukan
+    riset primer. Angka kelayakan klinis &amp; volume pasien pada prototype adalah data dummy. Validasi finansial, hukum, &amp; klinis profesional diperlukan sebelum keputusan final.</p>
+  </div>
+
+  <!-- Appendix B: one-page investor summary -->
+  <div class="section avoid pagebreak">
+    <h2>Lampiran B — Ringkasan Satu Halaman (Investor One-Pager)</h2>
+    <div class="grid2 avoid">
+      <div class="card"><h4>Peluang</h4><p>RME diwajibkan (UU 17/2023); ±23.000 praktik/klinik primer belum terdigitalisasi baik. TAM ±Rp332 miliar ARR.</p></div>
+      <div class="card"><h4>Solusi</h4><p>Sistem klinik &amp; RME paling sederhana, terjangkau, patuh — fokus praktik anak/solo. Prototype sudah live.</p></div>
+      <div class="card"><h4>Mengapa menang</h4><p>Blue ocean (sederhana × cukup lengkap); biaya tim Solo; regulasi sebagai mesin jual; moat stickiness + SATUSEHAT.</p></div>
+      <div class="card"><h4>Model</h4><p>SaaS Rp14,4jt/klinik/thn; build sebagai capital; margin membaik 40%→60%.</p></div>
+    </div>
+    <table class="avoid" style="margin-top:8px">
+      <thead><tr><th>Metrik kunci</th><th class="num">Nilai</th><th>Metrik kunci</th><th class="num">Nilai</th></tr></thead>
+      <tbody>
+        <tr><td>LTV : CAC</td><td class="num">±16 : 1</td><td>Break-even</td><td class="num">±47 klinik (Thn 2–3)</td></tr>
+        <tr><td>CAC payback</td><td class="num">±6 bln</td><td>NPV @20%</td><td class="num">+Rp390 jt</td></tr>
+        <tr><td>Gross margin</td><td class="num">40% → 60%</td><td>IRR (5 thn)</td><td class="num">±48%</td></tr>
+        <tr><td>Rule of 40 (Thn 3–5)</td><td class="num">86–122</td><td>EBITDA Thn 5</td><td class="num">Rp1,07 miliar</td></tr>
+      </tbody>
+    </table>
+    <div class="callout"><b>The Ask:</b> Seed <b>Rp450 juta</b> untuk runway hingga break-even &amp; hardening kepatuhan. Penggunaan: 30% produk, 50% tim, 15% pemasaran, 5% cadangan.
+    Target: 24 klinik berbayar di Tahun 1; ≥47 (break-even) di Tahun 2–3; 300 di Tahun 5. <b>Putusan: GO.</b></div>
+  </div>
+
+  <p class="footer-note">SEHA — Strategic Business Plan &amp; Feasibility Study (Consulting Edition). Angka proyeksi adalah asumsi untuk perencanaan &amp; penggalangan modal. Prototype: seha-clinic.vercel.app · Halaman ini sengaja dipadatkan untuk keperluan cetak.</p>
+</body>
+</html>
