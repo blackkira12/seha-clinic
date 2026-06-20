@@ -63,6 +63,13 @@
   .heat-M{ background:var(--warn-bg); color:var(--warn); font-weight:600; text-align:center; }
   .heat-L{ background:var(--safe-bg); color:var(--safe); font-weight:600; text-align:center; }
   .ref{ font-size:8pt; color:#4b5563; }
+  .chartbox{ border:1px solid var(--line); border-radius:10px; padding:12px 14px 8px; margin:11px 0 15px; page-break-inside:avoid; background:#fff; }
+  .chartbox svg{ width:100%; height:auto; display:block; }
+  .cap{ font-size:8.4pt; color:var(--muted); margin-top:4px; text-align:center; }
+  .legend{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; font-size:8.4pt; margin-top:5px; color:var(--ink2); }
+  .legend span{ display:inline-flex; align-items:center; gap:5px; }
+  .legend i{ width:11px; height:11px; border-radius:2px; display:inline-block; }
+  .charttitle{ font-size:9.4pt; font-weight:600; color:var(--brand-dark); margin-bottom:4px; }
   .pagebreak{ page-break-before:always; }
   .avoid{ page-break-inside:avoid; } .section{ page-break-inside:auto; }
   .footer-note{ font-size:8pt; color:var(--muted); font-style:italic; margin-top:18px; border-top:1px solid var(--line); padding-top:8px; }
@@ -236,6 +243,22 @@
         <tr><td><b>SOM (5 thn)</b></td><td>Target jangka menengah (±5% SAM)</td><td class="num">±300</td><td class="num">Rp4,32 M</td><td class="num">1,3%</td></tr>
       </tbody>
     </table>
+    <div class="chartbox">
+      <div class="charttitle">Gambar 1 — Funnel Pasar TAM / SAM / SOM</div>
+      <svg viewBox="0 0 640 270" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="40,20 600,20 510,80 130,80" fill="#1d4ed8"/>
+        <polygon points="130,90 510,90 410,150 230,150" fill="#3b82f6"/>
+        <polygon points="230,160 410,160 350,220 290,220" fill="#93c5fd"/>
+        <text x="320" y="46" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="700">TAM · ±23.000 fasilitas</text>
+        <text x="320" y="64" text-anchor="middle" fill="#dbeafe" font-size="11">Rp331,6 miliar ARR potensial</text>
+        <text x="320" y="116" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="700">SAM · ±5.750</text>
+        <text x="320" y="132" text-anchor="middle" fill="#e0ecff" font-size="10">Rp82,8 miliar</text>
+        <text x="320" y="190" text-anchor="middle" fill="#1e3a8a" font-size="11" font-weight="700">SOM (5 thn) · ±300</text>
+        <text x="320" y="205" text-anchor="middle" fill="#1e3a8a" font-size="9">Rp4,3 miliar</text>
+        <text x="320" y="245" text-anchor="middle" fill="#9ca3af" font-size="8.5">Lebar dipampatkan agar terbaca · SOM ≈ 1,3% TAM (sangat konservatif)</text>
+      </svg>
+    </div>
+
     <h3>5.3 Cross-check top-down &amp; pertumbuhan</h3>
     <p>Pasar EMR Asia-Pasifik tumbuh ±6,2% CAGR (2025–2032), didorong mandat digitalisasi &amp; ekspansi layanan swasta.
     Segmen "klinik sederhana" di Indonesia adalah niche bernilai ratusan miliar Rupiah yang <b>kurang dilayani</b>.
@@ -364,6 +387,31 @@
         <tr class="total"><td>Rata-rata</td><td class="num"></td><td class="num">2,9 / 5</td><td>Industri cukup menarik bagi pemain terdiferensiasi</td></tr>
       </tbody>
     </table>
+    <div class="chartbox">
+      <div class="charttitle">Gambar 2 — Radar Porter's Five Forces (skala 0–5; makin luar = makin intens)</div>
+      <svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg">
+        <!-- grid pentagons -->
+        <polygon points="180,50 284.6,126 244.7,249 115.3,249 75.4,126" fill="none" stroke="#e5e7eb" stroke-width="1"/>
+        <polygon points="180,105 232.3,143 212.3,204.5 147.7,204.5 127.7,143" fill="none" stroke="#e5e7eb" stroke-width="1"/>
+        <!-- axes -->
+        <g stroke="#e5e7eb" stroke-width="1">
+          <line x1="180" y1="160" x2="180" y2="50"/><line x1="180" y1="160" x2="284.6" y2="126"/>
+          <line x1="180" y1="160" x2="244.7" y2="249"/><line x1="180" y1="160" x2="115.3" y2="249"/>
+          <line x1="180" y1="160" x2="75.4" y2="126"/>
+        </g>
+        <!-- data -->
+        <polygon points="180,83 242.8,139.6 205.9,195.6 141.2,213.4 117.2,139.6" fill="#2563eb" fill-opacity="0.25" stroke="#2563eb" stroke-width="2"/>
+        <g fill="#1d4ed8"><circle cx="180" cy="83" r="3"/><circle cx="242.8" cy="139.6" r="3"/><circle cx="205.9" cy="195.6" r="3"/><circle cx="141.2" cy="213.4" r="3"/><circle cx="117.2" cy="139.6" r="3"/></g>
+        <!-- labels -->
+        <text x="180" y="40" text-anchor="middle" font-size="9.5" fill="#374151">Persaingan (3,5)</text>
+        <text x="292" y="122" text-anchor="start" font-size="9.5" fill="#374151">Pendatang (3,0)</text>
+        <text x="250" y="266" text-anchor="middle" font-size="9.5" fill="#374151">Pemasok (2,0)</text>
+        <text x="110" y="266" text-anchor="middle" font-size="9.5" fill="#374151">Pembeli (3,0)</text>
+        <text x="68" y="122" text-anchor="end" font-size="9.5" fill="#374151">Substitusi (3,0)</text>
+      </svg>
+      <div class="cap">Rata-rata 2,9/5 — industri cukup menarik bagi pemain terdiferensiasi.</div>
+    </div>
+
     <div class="callout"><b>Strategi pertahanan:</b> bangun <i>moat</i> melalui (1) data lock-in &amp; kebiasaan harian, (2) integrasi SATUSEHAT,
     (3) merek "paling mudah untuk praktik anak", (4) jaringan rujukan dokter regional.</div>
   </div>
@@ -413,6 +461,50 @@
     <p><b>Peta posisi 2×2 (Kesederhanaan × Kelengkapan).</b> EMR enterprise berada di kuadran "kompleks &amp; lengkap" (red ocean);
     manual berada di "sederhana &amp; tidak lengkap". SEHA menempati ruang kosong: <b>"sangat sederhana &amp; cukup lengkap"</b> —
     nilai tertinggi bagi praktik solo.</p>
+    <div class="chartbox">
+      <div class="charttitle">Gambar 3 — Peta Posisi Kompetitif (Kesederhanaan × Kelengkapan)</div>
+      <svg viewBox="0 0 480 330" xmlns="http://www.w3.org/2000/svg">
+        <rect x="60" y="40" width="380" height="260" fill="none" stroke="#e5e7eb"/>
+        <line x1="250" y1="40" x2="250" y2="300" stroke="#e5e7eb" stroke-dasharray="4 3"/>
+        <line x1="60" y1="170" x2="440" y2="170" stroke="#e5e7eb" stroke-dasharray="4 3"/>
+        <!-- blue ocean zone -->
+        <ellipse cx="400" cy="125" rx="48" ry="40" fill="#2563eb" fill-opacity="0.08" stroke="#93c5fd" stroke-dasharray="3 3"/>
+        <text x="400" y="80" text-anchor="middle" font-size="8.5" fill="#1d4ed8">Blue Ocean</text>
+        <!-- bubbles -->
+        <circle cx="130" cy="80" r="12" fill="#9ca3af"/><text x="130" y="60" text-anchor="middle" font-size="8.5" fill="#374151">EMR enterprise</text>
+        <circle cx="250" cy="120" r="11" fill="#9ca3af"/><text x="250" y="100" text-anchor="middle" font-size="8.5" fill="#374151">Platform klinik</text>
+        <circle cx="330" cy="250" r="11" fill="#9ca3af"/><text x="330" y="272" text-anchor="middle" font-size="8.5" fill="#374151">Manual</text>
+        <circle cx="400" cy="125" r="15" fill="#2563eb"/><text x="400" y="150" text-anchor="middle" font-size="9" font-weight="700" fill="#1d4ed8">SEHA</text>
+        <!-- axes labels -->
+        <text x="250" y="320" text-anchor="middle" font-size="9.5" fill="#6b7280">Kesederhanaan  →</text>
+        <text x="30" y="170" text-anchor="middle" font-size="9.5" fill="#6b7280" transform="rotate(-90 30,170)">Kelengkapan  →</text>
+      </svg>
+    </div>
+
+    <div class="chartbox">
+      <div class="charttitle">Gambar 4 — Strategy Canvas / Value Curve (Blue Ocean)</div>
+      <svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#eef2f7" stroke-width="1">
+          <line x1="70" y1="50" x2="570" y2="50"/><line x1="70" y1="100" x2="570" y2="100"/>
+          <line x1="70" y1="150" x2="570" y2="150"/><line x1="70" y1="200" x2="570" y2="200"/><line x1="70" y1="250" x2="570" y2="250"/>
+        </g>
+        <!-- SEHA -->
+        <polyline points="70,50 170,50 270,150 370,100 470,50 570,50" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+        <g fill="#2563eb"><circle cx="70" cy="50" r="3.5"/><circle cx="170" cy="50" r="3.5"/><circle cx="270" cy="150" r="3.5"/><circle cx="370" cy="100" r="3.5"/><circle cx="470" cy="50" r="3.5"/><circle cx="570" cy="50" r="3.5"/></g>
+        <!-- Enterprise -->
+        <polyline points="70,200 170,200 270,50 370,50 470,200 570,200" fill="none" stroke="#9ca3af" stroke-width="2" stroke-dasharray="5 4"/>
+        <g fill="#9ca3af"><circle cx="70" cy="200" r="3"/><circle cx="170" cy="200" r="3"/><circle cx="270" cy="50" r="3"/><circle cx="370" cy="50" r="3"/><circle cx="470" cy="200" r="3"/><circle cx="570" cy="200" r="3"/></g>
+        <!-- x labels -->
+        <g font-size="8.6" fill="#374151" text-anchor="middle">
+          <text x="70" y="272">Harga terjangkau</text><text x="170" y="272">Kemudahan</text><text x="270" y="272">Lengkap-enterprise</text>
+          <text x="370" y="272">Kepatuhan</text><text x="470" y="272">Fitur pediatri</text><text x="570" y="272">Onboarding cepat</text>
+        </g>
+        <text x="40" y="55" font-size="8" fill="#9ca3af" text-anchor="middle">Tinggi</text>
+        <text x="40" y="250" font-size="8" fill="#9ca3af" text-anchor="middle">Rendah</text>
+      </svg>
+      <div class="legend"><span><i style="background:#2563eb"></i>SEHA</span><span><i style="background:#9ca3af"></i>EMR enterprise</span></div>
+    </div>
+
     <h3>Grid ERRC (Eliminate–Reduce–Raise–Create)</h3>
     <div class="errc avoid">
       <div class="q elim"><b style="color:var(--danger)">ELIMINATE</b><ul><li>Fitur enterprise berlebih (multi-poli kompleks)</li><li>Proses setup berbulan-bulan</li><li>Biaya lisensi besar di muka</li></ul></div>
@@ -685,6 +777,24 @@
     </table>
     <p class="muted" style="font-size:8.2pt">*LTV:CAC tinggi karena CAC rendah (penjualan founder/BD). Pada churn 20%, LTV ±Rp29jt → LTV:CAC ±10:1 (tetap kuat).
     Magic number &gt;3 mengindikasikan S&amp;M <b>kurang-investasi</b> — peluang mempercepat pertumbuhan dengan menambah belanja akuisisi.</p>
+    <div class="chartbox">
+      <div class="charttitle">Gambar 5 — LTV vs CAC &amp; Efisiensi Akuisisi</div>
+      <svg viewBox="0 0 460 230" xmlns="http://www.w3.org/2000/svg">
+        <line x1="60" y1="195" x2="430" y2="195" stroke="#e5e7eb"/>
+        <!-- CAC -->
+        <rect x="100" y="184.4" width="80" height="10.6" fill="#b91c1c"/>
+        <text x="140" y="178" text-anchor="middle" font-size="10" fill="#374151">CAC</text>
+        <text x="140" y="210" text-anchor="middle" font-size="9.5" fill="#6b7280">Rp3 jt</text>
+        <!-- LTV -->
+        <rect x="260" y="25" width="80" height="170" fill="#047857"/>
+        <text x="300" y="18" text-anchor="middle" font-size="10" fill="#374151">LTV</text>
+        <text x="300" y="210" text-anchor="middle" font-size="9.5" fill="#6b7280">±Rp48 jt</text>
+        <!-- ratio -->
+        <text x="220" y="70" text-anchor="middle" font-size="15" font-weight="700" fill="#1d4ed8">LTV : CAC ≈ 16 : 1</text>
+        <text x="220" y="92" text-anchor="middle" font-size="9.5" fill="#6b7280">CAC payback ±6 bulan · benchmark sehat 3–5 : 1</text>
+      </svg>
+    </div>
+
     <div class="callout"><b>Implikasi modal:</b> efisiensi akuisisi sangat tinggi → setiap Rupiah S&amp;M menghasilkan ARR besar. Strategi optimal:
     <b>investasikan lebih agresif di akuisisi</b> begitu produk &amp; kepatuhan matang, untuk merebut pasar sebelum kompetitor.</div>
   </div>
@@ -720,6 +830,52 @@
         <tr><td>Rule of 40 (growth%+margin%)</td><td class="num">—</td><td class="num">235</td><td class="num">122</td><td class="num">99</td><td class="num">86</td></tr>
       </tbody>
     </table>
+    <div class="chartbox">
+      <div class="charttitle">Gambar 6 — Pertumbuhan Klinik Aktif (akhir tahun)</div>
+      <svg viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg">
+        <line x1="60" y1="190" x2="560" y2="190" stroke="#e5e7eb"/>
+        <g fill="#2563eb">
+          <rect x="80" y="177.2" width="60" height="12.8"/><rect x="180" y="158" width="60" height="32"/>
+          <rect x="280" y="126" width="60" height="64"/><rect x="380" y="83.3" width="60" height="106.7"/>
+          <rect x="480" y="30" width="60" height="160"/>
+        </g>
+        <g font-size="10" fill="#1d4ed8" text-anchor="middle" font-weight="700">
+          <text x="110" y="170">24</text><text x="210" y="151">60</text><text x="310" y="119">120</text><text x="410" y="76">200</text><text x="510" y="23">300</text>
+        </g>
+        <g font-size="9" fill="#6b7280" text-anchor="middle">
+          <text x="110" y="206">Thn 1</text><text x="210" y="206">Thn 2</text><text x="310" y="206">Thn 3</text><text x="410" y="206">Thn 4</text><text x="510" y="206">Thn 5</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="chartbox">
+      <div class="charttitle">Gambar 7 — Pendapatan (batang) vs EBITDA (garis) · Rp juta</div>
+      <svg viewBox="0 0 620 290" xmlns="http://www.w3.org/2000/svg">
+        <!-- zero line -->
+        <line x1="60" y1="233.1" x2="580" y2="233.1" stroke="#9ca3af" stroke-width="1"/>
+        <text x="46" y="236" font-size="8" fill="#9ca3af" text-anchor="end">0</text>
+        <!-- revenue bars -->
+        <g fill="#93c5fd">
+          <rect x="80" y="223.3" width="60" height="9.8"/><rect x="180" y="199" width="60" height="34.1"/>
+          <rect x="280" y="160" width="60" height="73.1"/><rect x="380" y="103.1" width="60" height="130"/>
+          <rect x="480" y="30" width="60" height="203.1"/>
+        </g>
+        <g font-size="8.5" fill="#1d4ed8" text-anchor="middle">
+          <text x="110" y="218">172,8</text><text x="210" y="194">604,8</text><text x="310" y="155">1.296</text><text x="410" y="98">2.304</text><text x="510" y="25">3.600</text>
+        </g>
+        <!-- EBITDA line -->
+        <polyline points="110,244.2 210,238.2 310,227 410,205.8 510,172.7" fill="none" stroke="#b45309" stroke-width="2.5"/>
+        <g fill="#b45309"><circle cx="110" cy="244.2" r="3.5"/><circle cx="210" cy="238.2" r="3.5"/><circle cx="310" cy="227" r="3.5"/><circle cx="410" cy="205.8" r="3.5"/><circle cx="510" cy="172.7" r="3.5"/></g>
+        <g font-size="8.3" fill="#b45309" text-anchor="middle">
+          <text x="110" y="258">−198</text><text x="210" y="252">−91</text><text x="310" y="221">+108</text><text x="410" y="200">+484</text><text x="510" y="166">+1.070</text>
+        </g>
+        <g font-size="9" fill="#6b7280" text-anchor="middle">
+          <text x="110" y="282">Thn 1</text><text x="210" y="282">Thn 2</text><text x="310" y="282">Thn 3</text><text x="410" y="282">Thn 4</text><text x="510" y="282">Thn 5</text>
+        </g>
+      </svg>
+      <div class="legend"><span><i style="background:#93c5fd"></i>Pendapatan</span><span><i style="background:#b45309"></i>EBITDA</span></div>
+    </div>
+
     <p class="muted" style="font-size:8.2pt">OpEx Thn 1 = tiga komponen yang ditetapkan (CEO+BD+Claude = Rp267,6jt), dipetakan ke S&amp;M/R&amp;D/G&amp;A; tumbuh seiring penambahan tim. Rule of 40 terlampaui di seluruh tahun.</p>
   </div>
 
@@ -775,6 +931,44 @@
       </table>
     </div>
   </div>
+
+    <div class="chartbox">
+      <div class="charttitle">Gambar 8 — Arus Kas Kumulatif (J-Curve) · Rp juta</div>
+      <svg viewBox="0 0 620 280" xmlns="http://www.w3.org/2000/svg">
+        <line x1="60" y1="202.5" x2="585" y2="202.5" stroke="#9ca3af"/>
+        <text x="48" y="205" font-size="8" fill="#9ca3af" text-anchor="end">0</text>
+        <polyline points="70,216.3 170,241.6 270,253.2 370,239.4 470,177.6 570,40.9" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+        <g fill="#2563eb"><circle cx="70" cy="216.3" r="3.5"/><circle cx="170" cy="241.6" r="3.5"/><circle cx="270" cy="253.2" r="4.5" fill="#b91c1c"/><circle cx="370" cy="239.4" r="3.5"/><circle cx="470" cy="177.6" r="3.5"/><circle cx="570" cy="40.9" r="3.5"/></g>
+        <g font-size="8.3" fill="#374151" text-anchor="middle">
+          <text x="70" y="208">−108</text><text x="170" y="234">−306</text><text x="270" y="269">−397</text><text x="370" y="232">−289</text><text x="470" y="170">+195</text><text x="570" y="33">+1.265</text>
+        </g>
+        <text x="270" y="282" font-size="8" fill="#b91c1c" text-anchor="middle">titik terendah (puncak kebutuhan modal)</text>
+        <g font-size="9" fill="#6b7280" text-anchor="middle">
+          <text x="70" y="22">Thn 0</text><text x="170" y="22">Thn 1</text><text x="370" y="22">Thn 3</text><text x="470" y="22">Thn 4</text><text x="570" y="22">Thn 5</text>
+        </g>
+      </svg>
+      <div class="cap">Kas kumulatif kembali positif pada Tahun 4 — bentuk J-curve klasik startup SaaS.</div>
+    </div>
+
+    <div class="chartbox">
+      <div class="charttitle">Gambar 9 — Analisis Break-even (Pendapatan vs Total Biaya per Jumlah Klinik)</div>
+      <svg viewBox="0 0 620 250" xmlns="http://www.w3.org/2000/svg">
+        <line x1="70" y1="220" x2="585" y2="220" stroke="#e5e7eb"/>
+        <line x1="70" y1="30" x2="70" y2="220" stroke="#e5e7eb"/>
+        <!-- revenue line -->
+        <line x1="70" y1="220" x2="570" y2="37.6" stroke="#2563eb" stroke-width="2.5"/>
+        <!-- cost line -->
+        <line x1="70" y1="191.8" x2="570" y2="82.8" stroke="#b45309" stroke-width="2.5"/>
+        <!-- BEP -->
+        <circle cx="262" cy="150" r="5" fill="#047857"/>
+        <line x1="262" y1="150" x2="262" y2="220" stroke="#047857" stroke-dasharray="3 3"/>
+        <text x="262" y="138" text-anchor="middle" font-size="9.5" font-weight="700" fill="#047857">BEP ≈ 47 klinik</text>
+        <g font-size="9" fill="#6b7280" text-anchor="middle">
+          <text x="70" y="234">0</text><text x="195" y="234">30</text><text x="320" y="234">60</text><text x="445" y="234">90</text><text x="570" y="234">120 klinik</text>
+        </g>
+      </svg>
+      <div class="legend"><span><i style="background:#2563eb"></i>Pendapatan</span><span><i style="background:#b45309"></i>Total biaya (overhead + COGS)</span></div>
+    </div>
 
   <!-- 22. Funding -->
   <div class="section avoid">
@@ -855,6 +1049,28 @@
         <tr><td>Harga −20%</td><td class="num">Rp2,92 jt</td><td class="num">92</td><td class="num"><span class="badge b-danger">+45</span></td></tr>
       </tbody>
     </table>
+    <div class="chartbox">
+      <div class="charttitle">Gambar 10 — Tornado Sensitivitas: Break-even Klinik (base = 47)</div>
+      <svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
+        <!-- base line -->
+        <line x1="227.1" y1="30" x2="227.1" y2="172" stroke="#1d4ed8" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <text x="227.1" y="24" text-anchor="middle" font-size="8.5" fill="#1d4ed8">base 47</text>
+        <!-- Harga -->
+        <rect x="112.9" y="45" width="114.2" height="26" fill="#a7f3d0"/><rect x="227.1" y="45" width="321.5" height="26" fill="#fecaca"/>
+        <text x="82" y="62" text-anchor="end" font-size="9" fill="#374151">Harga ±20%</text>
+        <text x="108" y="62" text-anchor="end" font-size="8.3" fill="#047857">31</text><text x="553" y="62" text-anchor="start" font-size="8.3" fill="#b91c1c">92</text>
+        <!-- COGS -->
+        <rect x="148.6" y="90" width="78.5" height="26" fill="#a7f3d0"/><rect x="227.1" y="90" width="135.8" height="26" fill="#fecaca"/>
+        <text x="82" y="107" text-anchor="end" font-size="9" fill="#374151">COGS ±20%</text>
+        <text x="144" y="107" text-anchor="end" font-size="8.3" fill="#047857">36</text><text x="367" y="107" text-anchor="start" font-size="8.3" fill="#b91c1c">66</text>
+        <!-- Overhead -->
+        <rect x="155.7" y="135" width="71.4" height="26" fill="#a7f3d0"/><rect x="227.1" y="135" width="57.2" height="26" fill="#fecaca"/>
+        <text x="82" y="152" text-anchor="end" font-size="9" fill="#374151">Overhead ±20%</text>
+        <text x="151" y="152" text-anchor="end" font-size="8.3" fill="#047857">37</text><text x="289" y="152" text-anchor="start" font-size="8.3" fill="#b91c1c">55</text>
+      </svg>
+      <div class="legend"><span><i style="background:#a7f3d0"></i>Lebih baik (BEP turun)</span><span><i style="background:#fecaca"></i>Lebih buruk (BEP naik)</span></div>
+    </div>
+
     <div class="callout"><b>Insight:</b> <b>harga</b> adalah tuas paling kuat (jauh melebihi overhead). Implikasi: jaga disiplin harga, hindari diskon agresif,
     dan dorong nilai/ARPU naik (paket, add-on) ketimbang memangkas harga.</div>
   </div>
