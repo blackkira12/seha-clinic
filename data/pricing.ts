@@ -47,7 +47,7 @@ export const OPERATIONAL_HPP = annualCostModel
 // === LAPISAN BIAYA: GENERAL (PERUSAHAAN) vs PER-KLINIK ===
 // Pengeluaran general = fixed overhead perusahaan (BUKAN per klinik). Dialokasikan
 // ke tiap klinik = general ÷ jumlah klinik aktif.
-export const USD_IDR = 16000; // asumsi kurs (dapat diubah)
+export const USD_IDR = 16500; // asumsi kurs USD/IDR (dapat diubah)
 export const CLAUDE_TEAM_USD = 200; // langganan Claude versi Team, per bulan
 
 export interface GeneralExpense {
@@ -56,16 +56,18 @@ export interface GeneralExpense {
   note?: string;
 }
 
+// Gaji mengikuti standar Kota Solo (Surakarta) — lebih rendah dari Jakarta.
 export const generalExpenses: GeneralExpense[] = [
   {
     component: "Langganan Claude (Team)",
     monthly: CLAUDE_TEAM_USD * USD_IDR,
     note: `US$${CLAUDE_TEAM_USD}/bln @ Rp${USD_IDR.toLocaleString("id-ID")}`,
   },
-  { component: "Gaji CEO", monthly: 20000000 },
+  { component: "Gaji CEO", monthly: 12000000, note: "standar Solo" },
   {
     component: "Gaji Business Development & Product Strategy",
-    monthly: 12000000,
+    monthly: 7000000,
+    note: "standar Solo",
   },
 ];
 

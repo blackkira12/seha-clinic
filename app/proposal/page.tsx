@@ -448,8 +448,8 @@ export default function ProposalPage() {
             <p className="font-semibold">⚠️ Plafon harga pasar</p>
             <p className="mt-1">
               Praktik solo realistis membayar {formatRupiah(MARKET_PRICE_FLOOR)}–
-              {formatRupiah(MARKET_PRICE_CEIL)}/tahun. Cost-plus penuh hanya masuk plafon ini
-              pada skala besar (≈150+ klinik). Di bawah itu, overhead general adalah{" "}
+              {formatRupiah(MARKET_PRICE_CEIL)}/tahun. Cost-plus penuh masuk plafon ini
+              pada skala menengah (≈55+ klinik). Di bawah itu, overhead general adalah{" "}
               <strong>investasi</strong> yang ditutup seiring pertumbuhan.
             </p>
           </div>
