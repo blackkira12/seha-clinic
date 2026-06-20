@@ -39,11 +39,64 @@ export const annualCostModel: CostLine[] = [
 export const ANNUAL_HPP = annualCostModel.reduce((s, c) => s + c.annual, 0); // 10.800.000
 
 // HPP operasional MURNI (infra + pemeliharaan) — TANPA amortisasi pengembangan.
-// Dipakai untuk model klien tunggal (satu praktik mandiri), di mana biaya build
-// dihitung terpisah, bukan dibagi ke banyak klinik.
+// Dipakai sebagai BIAYA LANGSUNG per-klinik (COGS) dalam model berlapis.
 export const OPERATIONAL_HPP = annualCostModel
   .filter((c) => !c.component.toLowerCase().includes("amortisasi"))
   .reduce((s, c) => s + c.annual, 0); // 8.600.000
+
+// === LAPISAN BIAYA: GENERAL (PERUSAHAAN) vs PER-KLINIK ===
+// Pengeluaran general = fixed overhead perusahaan (BUKAN per klinik). Dialokasikan
+// ke tiap klinik = general ÷ jumlah klinik aktif.
+export const USD_IDR = 16000; // asumsi kurs (dapat diubah)
+export const CLAUDE_TEAM_USD = 200; // langganan Claude versi Team, per bulan
+
+export interface GeneralExpense {
+  component: string;
+  monthly: number; // Rp/bulan
+  note?: string;
+}
+
+export const generalExpenses: GeneralExpense[] = [
+  {
+    component: "Langganan Claude (Team)",
+    monthly: CLAUDE_TEAM_USD * USD_IDR,
+    note: `US$${CLAUDE_TEAM_USD}/bln @ Rp${USD_IDR.toLocaleString("id-ID")}`,
+  },
+  { component: "Gaji CEO", monthly: 20000000 },
+  {
+    component: "Gaji Business Development & Product Strategy",
+    monthly: 12000000,
+  },
+];
+
+export const GENERAL_MONTHLY = generalExpenses.reduce((s, e) => s + e.monthly, 0); // 35.200.000
+export const GENERAL_ANNUAL = GENERAL_MONTHLY * 12; // 422.400.000
+
+// Biaya LANGSUNG per klinik (COGS) — infra + pemeliharaan, terjadi per klinik.
+export const DIRECT_PER_CLINIC_ANNUAL = OPERATIONAL_HPP; // 8.600.000
+
+// HPP fully-loaded per klinik = biaya langsung + alokasi overhead general.
+export function perClinicLoadedHPP(nClinics: number): number {
+  const n = Math.max(1, Math.floor(nClinics));
+  return Math.round(DIRECT_PER_CLINIC_ANNUAL + GENERAL_ANNUAL / n);
+}
+
+// Harga jual per klinik = HPP fully-loaded + margin.
+export function perClinicPrice(nClinics: number, marginPct: number): number {
+  return Math.round(perClinicLoadedHPP(nClinics) * (1 + marginPct / 100));
+}
+
+// Jumlah klinik agar overhead general tertutup (break-even) pada harga jual tertentu.
+// Kontribusi per klinik = harga - biaya langsung.
+export function breakEvenClinics(price: number): number {
+  const contribution = price - DIRECT_PER_CLINIC_ANNUAL;
+  if (contribution <= 0) return Infinity;
+  return Math.ceil(GENERAL_ANNUAL / contribution);
+}
+
+// Plafon harga pasar untuk praktik solo (referensi kompetitif).
+export const MARKET_PRICE_FLOOR = 12000000;
+export const MARKET_PRICE_CEIL = 18000000;
 export const ANNUAL_MARGIN_PCT = 33;
 export const RECOMMENDED_ANNUAL = 14400000; // ≈ HPP + 33% margin, dibulatkan
 export const ANNUAL_FLOOR = 12000000; // lantai, margin tipis

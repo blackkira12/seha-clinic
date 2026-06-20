@@ -19,6 +19,15 @@ import {
   ANNUAL_PREMIUM,
   ONBOARDING_FEE,
   ANNUAL_PRICE_NOTE,
+  generalExpenses,
+  GENERAL_MONTHLY,
+  GENERAL_ANNUAL,
+  DIRECT_PER_CLINIC_ANNUAL,
+  perClinicLoadedHPP,
+  perClinicPrice,
+  breakEvenClinics,
+  MARKET_PRICE_FLOOR,
+  MARKET_PRICE_CEIL,
 } from "@/data/pricing";
 
 // Default assumption: midpoint of a package range, or 0 when custom-quote.
@@ -81,6 +90,21 @@ export default function ProposalPage() {
     const tco = ONBOARDING_FEE + annual * years;
     return { opsWithMargin, amortPerYear, annual, year1, tco, years, avgPerYear: Math.round(tco / years) };
   }, [scModel, scBuild, scYears, scMargin, scOps]);
+
+  // ── Model biaya berlapis: General (overhead) → alokasi per-klinik → HPP → harga ──
+  const [nClinics, setNClinics] = useState<number>(50);
+  const [loadedMargin, setLoadedMargin] = useState<number>(30);
+
+  const layered = useMemo(() => {
+    const n = Math.max(1, Math.floor(nClinics));
+    const overheadPerClinic = Math.round(GENERAL_ANNUAL / n);
+    const loadedHPP = perClinicLoadedHPP(n);
+    const price = perClinicPrice(n, loadedMargin);
+    const beAtMarket = breakEvenClinics(RECOMMENDED_ANNUAL); // pada harga pasar Rp14,4jt
+    return { n, overheadPerClinic, loadedHPP, price, beAtMarket };
+  }, [nClinics, loadedMargin]);
+
+  const sensitivity = [10, 25, 50, 75, 100, 150, 200];
 
   return (
     <div className="space-y-8">
@@ -206,6 +230,246 @@ export default function ProposalPage() {
           Penting: angka Rp108jt ini adalah biaya <strong>membangun</strong> aplikasi
           (dibayar ke pengembang / diamortisasi ke banyak klinik), <strong>bukan</strong>
           tarif yang dibayar dr. Aisyah setiap tahun untuk memakai aplikasi.
+        </p>
+      </section>
+
+      {/* Layered cost model: General overhead → per-clinic allocation → HPP → price */}
+      <section className="card space-y-6 border-brand-200">
+        <div>
+          <h2 className="section-title">Struktur Biaya Berlapis: General → Per-Klinik → HPP → Harga</h2>
+          <p className="mt-1 text-sm text-gray-500">
+            Pengeluaran dipisah: <span className="font-medium">General (overhead perusahaan)</span> vs{" "}
+            <span className="font-medium">Langsung per-klinik (COGS)</span>. Overhead general dialokasikan
+            ke tiap klinik (general ÷ jumlah klinik), lalu digabung menjadi HPP fully-loaded dan harga jual.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+          {/* 1. General expenses */}
+          <div>
+            <h3 className="mb-2 text-sm font-semibold text-gray-700">
+              1 · Pengeluaran General (Perusahaan) — bukan per-klinik
+            </h3>
+            <div className="overflow-x-auto rounded-xl border border-gray-100">
+              <table className="min-w-full text-sm">
+                <thead>
+                  <tr className="border-b border-gray-200 bg-gray-50 text-left text-xs uppercase tracking-wide text-gray-400">
+                    <th className="px-3 py-2 font-medium">Komponen</th>
+                    <th className="px-3 py-2 text-right font-medium">/bulan</th>
+                    <th className="px-3 py-2 text-right font-medium">/tahun</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {generalExpenses.map((g) => (
+                    <tr key={g.component} className="border-b border-gray-100">
+                      <td className="px-3 py-2 text-gray-700">
+                        {g.component}
+                        {g.note && (
+                          <span className="ml-1 text-xs text-gray-400">({g.note})</span>
+                        )}
+                      </td>
+                      <td className="px-3 py-2 text-right text-gray-600">
+                        {formatRupiah(g.monthly)}
+                      </td>
+                      <td className="px-3 py-2 text-right text-gray-600">
+                        {formatRupiah(g.monthly * 12)}
+                      </td>
+                    </tr>
+                  ))}
+                  <tr className="bg-brand-50 font-bold text-brand-700">
+                    <td className="px-3 py-2">Total General</td>
+                    <td className="px-3 py-2 text-right">{formatRupiah(GENERAL_MONTHLY)}</td>
+                    <td className="px-3 py-2 text-right">{formatRupiah(GENERAL_ANNUAL)}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* 2. Direct per-clinic costs */}
+          <div>
+            <h3 className="mb-2 text-sm font-semibold text-gray-700">
+              2 · Pengeluaran Langsung per-Klinik (COGS)
+            </h3>
+            <div className="overflow-x-auto rounded-xl border border-gray-100">
+              <table className="min-w-full text-sm">
+                <thead>
+                  <tr className="border-b border-gray-200 bg-gray-50 text-left text-xs uppercase tracking-wide text-gray-400">
+                    <th className="px-3 py-2 font-medium">Komponen</th>
+                    <th className="px-3 py-2 text-right font-medium">/tahun</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {annualCostModel
+                    .filter((c) => !c.component.toLowerCase().includes("amortisasi"))
+                    .map((c) => (
+                      <tr key={c.component} className="border-b border-gray-100">
+                        <td className="px-3 py-2 text-gray-700">{c.component}</td>
+                        <td className="px-3 py-2 text-right text-gray-600">
+                          {formatRupiah(c.annual)}
+                        </td>
+                      </tr>
+                    ))}
+                  <tr className="bg-brand-50 font-bold text-brand-700">
+                    <td className="px-3 py-2">Total COGS langsung / klinik</td>
+                    <td className="px-3 py-2 text-right">
+                      {formatRupiah(DIRECT_PER_CLINIC_ANNUAL)}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-2 text-xs text-gray-400">
+              Biaya ini terjadi untuk setiap klinik (infra + pemeliharaan).
+            </p>
+          </div>
+        </div>
+
+        {/* 3. Allocation controls */}
+        <div className="rounded-xl border border-gray-100 bg-gray-50 p-4">
+          <h3 className="mb-3 text-sm font-semibold text-gray-700">
+            3 · Alokasi Overhead ke Per-Klinik
+          </h3>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div>
+              <label className="label" htmlFor="ly-n">
+                Jumlah klinik aktif (untuk membagi overhead): <b>{layered.n}</b>
+              </label>
+              <input
+                id="ly-n"
+                type="range"
+                min={1}
+                max={250}
+                value={nClinics}
+                onChange={(e) => setNClinics(Number(e.target.value))}
+                className="w-full"
+              />
+              <div className="mt-1 flex justify-between text-[10px] text-gray-400">
+                <span>1</span><span>50</span><span>100</span><span>150</span><span>250</span>
+              </div>
+            </div>
+            <div>
+              <label className="label" htmlFor="ly-margin">Margin (%)</label>
+              <input
+                id="ly-margin"
+                type="number"
+                min={0}
+                className="input"
+                value={loadedMargin}
+                onChange={(e) => setLoadedMargin(Number(e.target.value) || 0)}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* 4 & 5. HPP fully-loaded → price */}
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="rounded-xl border border-gray-100 bg-white p-4">
+            <p className="card-title">Overhead general / klinik</p>
+            <p className="mt-1 text-xl font-bold text-gray-800">
+              {formatRupiah(layered.overheadPerClinic)}
+            </p>
+            <p className="text-xs text-gray-400">= {formatRupiah(GENERAL_ANNUAL)} ÷ {layered.n}</p>
+          </div>
+          <div className="rounded-xl border border-gray-100 bg-white p-4">
+            <p className="card-title">+ COGS langsung</p>
+            <p className="mt-1 text-xl font-bold text-gray-800">
+              {formatRupiah(DIRECT_PER_CLINIC_ANNUAL)}
+            </p>
+            <p className="text-xs text-gray-400">infra + pemeliharaan</p>
+          </div>
+          <div className="rounded-xl border border-brand-200 bg-brand-50 p-4">
+            <p className="card-title text-brand-700">HPP fully-loaded / klinik</p>
+            <p className="mt-1 text-xl font-bold text-brand-700">
+              {formatRupiah(layered.loadedHPP)}
+            </p>
+            <p className="text-xs text-gray-500">COGS + overhead</p>
+          </div>
+          <div className="rounded-xl border border-brand-300 bg-brand-600 p-4 text-white">
+            <p className="text-xs font-medium text-brand-100">Harga jual / klinik / tahun</p>
+            <p className="mt-1 text-2xl font-bold">{formatRupiah(layered.price)}</p>
+            <p className="text-xs text-brand-100">HPP + margin {loadedMargin}%</p>
+          </div>
+        </div>
+
+        {/* Sensitivity by clinic count */}
+        <div>
+          <h3 className="mb-2 text-sm font-semibold text-gray-700">
+            Sensitivitas Harga terhadap Jumlah Klinik
+          </h3>
+          <div className="overflow-x-auto rounded-xl border border-gray-100">
+            <table className="min-w-full text-sm">
+              <thead>
+                <tr className="border-b border-gray-200 bg-gray-50 text-left text-xs uppercase tracking-wide text-gray-400">
+                  <th className="px-3 py-2 font-medium">Jumlah klinik</th>
+                  <th className="px-3 py-2 text-right font-medium">Overhead/klinik</th>
+                  <th className="px-3 py-2 text-right font-medium">HPP fully-loaded</th>
+                  <th className="px-3 py-2 text-right font-medium">Harga (margin {loadedMargin}%)</th>
+                  <th className="px-3 py-2 text-right font-medium">vs Pasar</th>
+                </tr>
+              </thead>
+              <tbody>
+                {sensitivity.map((n) => {
+                  const hpp = perClinicLoadedHPP(n);
+                  const price = perClinicPrice(n, loadedMargin);
+                  const competitive = price <= MARKET_PRICE_CEIL;
+                  return (
+                    <tr key={n} className={`border-b border-gray-100 ${n === layered.n ? "bg-brand-50" : ""}`}>
+                      <td className="px-3 py-2 font-medium text-gray-700">{n}</td>
+                      <td className="px-3 py-2 text-right text-gray-600">
+                        {formatRupiah(Math.round(GENERAL_ANNUAL / n))}
+                      </td>
+                      <td className="px-3 py-2 text-right text-gray-600">{formatRupiah(hpp)}</td>
+                      <td className="px-3 py-2 text-right font-semibold text-gray-800">
+                        {formatRupiah(price)}
+                      </td>
+                      <td className="px-3 py-2 text-right">
+                        <span
+                          className={`rounded-full border px-2 py-0.5 text-xs font-medium ${
+                            competitive
+                              ? "border-safe-border bg-safe-bg text-safe-text"
+                              : "border-danger-border bg-danger-bg text-danger-text"
+                          }`}
+                        >
+                          {competitive ? "Kompetitif" : "Terlalu mahal"}
+                        </span>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* Strategic takeaways */}
+        <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
+          <div className="rounded-xl border border-warn-border bg-warn-bg px-4 py-3 text-sm text-warn-text">
+            <p className="font-semibold">⚠️ Plafon harga pasar</p>
+            <p className="mt-1">
+              Praktik solo realistis membayar {formatRupiah(MARKET_PRICE_FLOOR)}–
+              {formatRupiah(MARKET_PRICE_CEIL)}/tahun. Cost-plus penuh hanya masuk plafon ini
+              pada skala besar (≈150+ klinik). Di bawah itu, overhead general adalah{" "}
+              <strong>investasi</strong> yang ditutup seiring pertumbuhan.
+            </p>
+          </div>
+          <div className="rounded-xl border border-brand-200 bg-brand-50 px-4 py-3 text-sm text-gray-700">
+            <p className="font-semibold text-brand-700">📊 Break-even overhead general</p>
+            <p className="mt-1">
+              Pada harga pasar {formatRupiah(RECOMMENDED_ANNUAL)}/tahun (kontribusi{" "}
+              {formatRupiah(RECOMMENDED_ANNUAL - DIRECT_PER_CLINIC_ANNUAL)}/klinik), dibutuhkan{" "}
+              <strong>±{layered.beAtMarket} klinik</strong> agar overhead general (CEO, BD, Claude)
+              tertutup. Untuk laba sehat, perlu lebih dari itu.
+            </p>
+          </div>
+        </div>
+
+        <p className="rounded-lg bg-gray-50 px-3 py-2 text-xs text-gray-500">
+          Untuk <strong>dr. Aisyah</strong> (1 dari sekian klinik): harga wajar mengikuti{" "}
+          <strong>harga pasar ±{formatRupiah(RECOMMENDED_ANNUAL)}/tahun</strong>, bukan cost-plus
+          penuh saat klinik masih sedikit. Gaji CEO &amp; BD serta langganan Claude adalah biaya
+          membangun perusahaan/produk — dipulihkan melalui pertumbuhan basis pelanggan, bukan
+          dibebankan penuh ke satu klinik. Semua angka adalah asumsi yang dapat diubah.
         </p>
       </section>
 
