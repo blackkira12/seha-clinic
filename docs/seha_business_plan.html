@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<title>SEHA — Business Plan & Studi Kelayakan</title>
+<style>
+  :root{
+    --brand:#2563eb; --brand-dark:#1d4ed8; --brand-50:#eff6ff; --brand-100:#dbeafe;
+    --ink:#1f2937; --muted:#6b7280; --line:#e5e7eb;
+    --safe-bg:#ecfdf5; --safe:#047857; --warn-bg:#fffbeb; --warn:#b45309; --danger-bg:#fef2f2; --danger:#b91c1c;
+  }
+  *{ box-sizing:border-box; }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; color:var(--ink); font-size:10.5pt; line-height:1.5; margin:0; }
+  h1,h2,h3{ line-height:1.25; }
+  h2{ font-size:14pt; margin:22px 0 8px; padding-bottom:5px; border-bottom:2px solid var(--brand-100); color:var(--brand-dark); }
+  h3{ font-size:11.5pt; margin:14px 0 4px; color:#374151; }
+  p{ margin:6px 0; } ul,ol{ margin:6px 0 10px; padding-left:18px; } li{ margin:2px 0; }
+  .muted{ color:var(--muted); }
+  .cover{ background:linear-gradient(135deg,var(--brand) 0%,var(--brand-dark) 100%); color:#fff; padding:46px 40px; border-radius:14px; margin-bottom:24px; }
+  .cover .kicker{ font-size:9pt; letter-spacing:.12em; text-transform:uppercase; color:var(--brand-100); }
+  .cover h1{ color:#fff; font-size:26pt; margin:8px 0 2px; }
+  .cover .sub{ font-size:12pt; color:#e0ecff; margin:0 0 18px; }
+  .cover .meta{ display:flex; flex-wrap:wrap; gap:8px 26px; font-size:9.5pt; color:#dbe7ff; }
+  .cover .meta b{ color:#fff; }
+  .note{ background:var(--warn-bg); border:1px solid #fde68a; color:var(--warn); border-radius:8px; padding:9px 12px; font-size:9pt; margin:14px 0; }
+  table{ width:100%; border-collapse:collapse; margin:10px 0 16px; font-size:9.5pt; page-break-inside:avoid; }
+  th,td{ text-align:left; padding:7px 9px; border-bottom:1px solid var(--line); vertical-align:top; }
+  thead th{ background:var(--brand-50); color:var(--brand-dark); font-weight:600; border-bottom:1.5px solid var(--brand-100); }
+  tbody tr:nth-child(even){ background:#fafbfc; }
+  td.num,th.num{ text-align:right; white-space:nowrap; }
+  tr.total td{ font-weight:700; background:var(--brand-50); color:var(--brand-dark); border-top:1.5px solid var(--brand-100); }
+  tr.pos td{ color:var(--safe); font-weight:600; } tr.neg td{ color:var(--danger); }
+  .badge{ display:inline-block; padding:1px 8px; border-radius:999px; font-size:8.5pt; font-weight:600; border:1px solid; }
+  .b-safe{ background:var(--safe-bg); color:var(--safe); border-color:#a7f3d0; }
+  .b-warn{ background:var(--warn-bg); color:var(--warn); border-color:#fde68a; }
+  .b-danger{ background:var(--danger-bg); color:var(--danger); border-color:#fecaca; }
+  .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .kpi{ border:1px solid var(--line); border-radius:10px; padding:12px; }
+  .kpi .l{ font-size:8.5pt; color:var(--muted); } .kpi .v{ font-size:15pt; font-weight:700; color:var(--brand-dark); }
+  .avoid{ page-break-inside:avoid; } .section{ page-break-inside:auto; }
+  .footer-note{ font-size:8.5pt; color:var(--muted); font-style:italic; margin-top:22px; border-top:1px solid var(--line); padding-top:10px; }
+  @page{ size:A4; margin:16mm 14mm 16mm 14mm; }
+</style>
+</head>
+<body>
+
+  <div class="cover">
+    <div class="kicker">Business Plan &amp; Studi Kelayakan</div>
+    <h1>SEHA</h1>
+    <div class="sub">Clinic Operations &amp; RME Platform — “Kembalikan Waktu Dokter untuk Pasien”</div>
+    <div class="meta">
+      <span><b>Versi:</b> 1.0</span>
+      <span><b>Tanggal:</b> 20 Juni 2026</span>
+      <span><b>Basis:</b> Solo (Surakarta), Jawa Tengah</span>
+      <span><b>Status:</b> Internal — perencanaan &amp; penggalangan modal</span>
+    </div>
+  </div>
+
+  <div class="note">Seluruh angka pasar, finansial, dan proyeksi bersifat <b>ilustratif/asumsi</b> untuk perencanaan. Wajib divalidasi dengan riset pasar &amp; data operasional aktual.</div>
+
+  <div class="section">
+    <h2>1. Ringkasan Eksekutif</h2>
+    <p>SEHA adalah platform operasional klinik &amp; Rekam Medis Elektronik (RME) berbasis web yang dirancang
+    <b>sederhana, cepat, dan low-click</b> untuk praktik mandiri dan klinik kecil di Indonesia. Produk menyasar
+    titik nyeri utama dokter: dokumentasi manual yang tersebar dan EMR yang terlalu rumit.</p>
+    <p>Dengan diwajibkannya RME (Permenkes 24/2022) dan dorongan interoperabilitas SATUSEHAT, kebutuhan akan
+    sistem yang ringan namun patuh regulasi sangat besar. SEHA menyediakan registrasi &amp; antrean, RME/SOAP,
+    KMS tumbuh kembang anak, farmasi &amp; inventory, kasir, laporan, reminder, dashboard manajemen, dan website publik praktik.</p>
+    <p><b>Model bisnis:</b> SaaS langganan tahunan per klinik (±Rp14,4jt/klinik/tahun, all-in). Biaya pengembangan
+    produk diperlakukan sebagai investasi (capital), dipulihkan melalui pertumbuhan basis pelanggan.</p>
+    <div class="grid2 avoid" style="margin-top:10px">
+      <div class="kpi"><div class="l">Harga langganan / klinik / tahun</div><div class="v">Rp14,4 juta</div></div>
+      <div class="kpi"><div class="l">Kontribusi margin / klinik / tahun</div><div class="v">Rp5,8 juta</div></div>
+      <div class="kpi"><div class="l">Overhead general / tahun</div><div class="v">Rp267,6 juta</div></div>
+      <div class="kpi"><div class="l">Break-even</div><div class="v">±47 klinik</div></div>
+    </div>
+    <p><b>Putusan kelayakan: LAYAK (GO)</b> — secara teknis &amp; operasional sangat layak; secara ekonomi layak pada
+    skala ≥47 klinik (tercapai ±tahun ke-2 pada laju akuisisi wajar); fase awal bersifat investasi.</p>
+  </div>
+
+  <div class="section">
+    <h2>2. Visi, Misi &amp; Produk</h2>
+    <p><b>Visi:</b> menjadi sistem operasional klinik termudah dan paling patuh regulasi untuk praktik mandiri &amp; klinik kecil di Indonesia.</p>
+    <p><b>Misi:</b> mengembalikan waktu dokter untuk pasien dengan mengurangi beban administrasi, sambil menyiapkan klinik untuk era RME &amp; SATUSEHAT.</p>
+    <h3>Modul produk</h3>
+    <ul>
+      <li>Registrasi &amp; antrean (aturan keadilan online/offline)</li>
+      <li>RME / SOAP + kode ICD-10 + (simulasi) Ambience AI Scribe</li>
+      <li>KMS Digital Anak — kurva pertumbuhan persentil</li>
+      <li>Farmasi &amp; inventory + pergerakan stok + monitoring kadaluarsa</li>
+      <li>Kasir &amp; billing</li>
+      <li>Laporan PDF, surat sehat/sakit, reminder center</li>
+      <li>Dashboard manajemen (analitik bulanan)</li>
+      <li>Website publik praktik + kesiapan SATUSEHAT/HL7 FHIR (Fase 2)</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>3. Masalah &amp; Peluang</h2>
+    <ul>
+      <li><b>Dokumentasi manual</b> menyita waktu dokter &amp; rawan tercecer.</li>
+      <li><b>EMR existing terlalu kompleks</b> — banyak klik, lambat untuk praktik harian.</li>
+      <li><b>Regulasi RME diwajibkan</b> (Permenkes 24/2022) — fasyankes wajib beralih ke rekam medis elektronik.</li>
+      <li><b>Dorongan SATUSEHAT</b> — interoperabilitas nasional menjadi kebutuhan.</li>
+    </ul>
+    <p><b>Peluang:</b> Indonesia memiliki puluhan ribu praktik mandiri &amp; klinik pratama yang belum terdigitalisasi
+    dengan baik — pasar besar untuk solusi RME ringan, terjangkau, dan patuh regulasi.</p>
+  </div>
+
+  <div class="section">
+    <h2>4. Analisis Pasar</h2>
+    <table class="avoid">
+      <thead><tr><th>Segmen</th><th>Deskripsi</th><th>Prioritas</th></tr></thead>
+      <tbody>
+        <tr><td>Praktik mandiri dokter</td><td>Dokter umum/spesialis praktik sendiri — butuh sistem ringan</td><td><span class="badge b-safe">Utama</span></td></tr>
+        <tr><td>Klinik Pratama</td><td>Klinik kecil multi-staf</td><td><span class="badge b-safe">Utama</span></td></tr>
+        <tr><td>Klinik Utama</td><td>Lebih kompleks, multi-poli</td><td><span class="badge b-warn">Sekunder</span></td></tr>
+      </tbody>
+    </table>
+    <h3>Lanskap kompetisi &amp; positioning</h3>
+    <p>Vendor EMR existing cenderung kompleks/mahal atau fokus fasyankes besar. <b>Positioning SEHA:</b> paling sederhana,
+    low-click, terjangkau, dan ramah praktik anak/pediatri (fitur KMS) — dengan kepatuhan RME &amp; kesiapan SATUSEHAT.
+    Strategi masuk regional (Solo–Yogyakarta) lalu ekspansi.</p>
+  </div>
+
+  <div class="section">
+    <h2>5. Model Bisnis &amp; Struktur Biaya</h2>
+    <h3>Pendapatan</h3>
+    <ul>
+      <li><b>Langganan tahunan:</b> ±Rp14,4 juta/klinik/tahun (all-in: hosting, domain, pemeliharaan, dukungan, update).</li>
+      <li><b>Onboarding:</b> ±Rp3 juta sekali (deploy, migrasi, pelatihan).</li>
+      <li><b>Fase 2 (add-on):</b> integrasi WhatsApp, SATUSEHAT, billing lanjutan — biaya terpisah.</li>
+    </ul>
+    <h3>Pengeluaran General (overhead perusahaan) — basis Solo</h3>
+    <table class="avoid">
+      <thead><tr><th>Komponen</th><th class="num">/bulan</th><th class="num">/tahun</th></tr></thead>
+      <tbody>
+        <tr><td>Langganan Claude (Team) — US$200 @ Rp16.500</td><td class="num">Rp3.300.000</td><td class="num">Rp39.600.000</td></tr>
+        <tr><td>Gaji CEO (standar Solo)</td><td class="num">Rp12.000.000</td><td class="num">Rp144.000.000</td></tr>
+        <tr><td>Gaji Business Development &amp; Product Strategy (Solo)</td><td class="num">Rp7.000.000</td><td class="num">Rp84.000.000</td></tr>
+        <tr class="total"><td>Total Overhead General</td><td class="num">Rp22.300.000</td><td class="num">Rp267.600.000</td></tr>
+      </tbody>
+    </table>
+    <h3>Biaya langsung per klinik (COGS) &amp; unit economics</h3>
+    <table class="avoid">
+      <thead><tr><th>Item</th><th class="num">Nilai/tahun</th></tr></thead>
+      <tbody>
+        <tr><td>Harga langganan / klinik</td><td class="num">Rp14.400.000</td></tr>
+        <tr><td>COGS langsung / klinik (infra + pemeliharaan)</td><td class="num">Rp8.600.000</td></tr>
+        <tr class="total"><td>Kontribusi margin / klinik</td><td class="num">Rp5.800.000</td></tr>
+      </tbody>
+    </table>
+    <h3>Biaya pengembangan (capital, one-time)</h3>
+    <p>Pengembangan produk: <b>Rp108.000.000</b> (diperlakukan sebagai investasi/CapEx, bukan dibebankan ke satu klinik).</p>
+  </div>
+
+  <div class="section">
+    <h2>6. Proyeksi Keuangan (3 Tahun, ilustratif)</h2>
+    <p class="muted">Asumsi: akuisisi rata-rata ±4 klinik/bulan; harga Rp14,4jt; COGS Rp8,6jt/klinik; overhead tumbuh moderat seiring penambahan staf.</p>
+    <table class="avoid">
+      <thead><tr><th>Indikator</th><th class="num">Tahun 1</th><th class="num">Tahun 2</th><th class="num">Tahun 3</th></tr></thead>
+      <tbody>
+        <tr><td>Klinik aktif (akhir tahun)</td><td class="num">24</td><td class="num">60</td><td class="num">120</td></tr>
+        <tr><td>Klinik rata-rata (basis pendapatan)</td><td class="num">13</td><td class="num">42</td><td class="num">90</td></tr>
+        <tr><td>Pendapatan langganan</td><td class="num">Rp187,2 jt</td><td class="num">Rp604,8 jt</td><td class="num">Rp1.296 jt</td></tr>
+        <tr><td>COGS langsung</td><td class="num">Rp111,8 jt</td><td class="num">Rp361,2 jt</td><td class="num">Rp774 jt</td></tr>
+        <tr><td>Laba kotor (kontribusi)</td><td class="num">Rp75,4 jt</td><td class="num">Rp243,6 jt</td><td class="num">Rp522 jt</td></tr>
+        <tr><td>Overhead general</td><td class="num">Rp267,6 jt</td><td class="num">Rp300 jt</td><td class="num">Rp360 jt</td></tr>
+        <tr class="neg"><td>Laba/(Rugi) bersih — T1</td><td class="num">(Rp192,2 jt)</td><td class="num">—</td><td class="num">—</td></tr>
+        <tr class="neg"><td>Laba/(Rugi) bersih — T2</td><td class="num">—</td><td class="num">(Rp56,4 jt)</td><td class="num">—</td></tr>
+        <tr class="pos"><td>Laba bersih — T3</td><td class="num">—</td><td class="num">—</td><td class="num">+Rp162 jt</td></tr>
+      </tbody>
+    </table>
+    <ul>
+      <li><b>Break-even operasional:</b> ±47–52 klinik → tercapai sekitar pertengahan Tahun 2.</li>
+      <li><b>Profitabilitas:</b> mulai Tahun 3.</li>
+      <li><b>Kebutuhan pendanaan (runway):</b> ±Rp108jt (build) + akumulasi rugi T1–T2 (±Rp250jt) ≈ <b>Rp350–400 juta</b> untuk mencapai profitabilitas.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>7. Strategi Go-to-Market</h2>
+    <ol>
+      <li><b>Pilot / Founding Partner:</b> Praktik Mandiri dr. Aisyah Fikritama, S.A. sebagai klien perdana &amp; studi kasus.</li>
+      <li><b>Ekspansi regional:</b> Solo–Yogyakarta via referral dokter &amp; komunitas praktik anak.</li>
+      <li><b>Bukti nilai:</b> testimoni, efisiensi waktu, kepatuhan RME → memperkuat akuisisi.</li>
+      <li><b>Kanal:</b> demo langsung, asosiasi profesi, konten edukasi RME/SATUSEHAT.</li>
+      <li><b>Retensi:</b> dukungan responsif + update berkelanjutan + roadmap Fase 2.</li>
+    </ol>
+  </div>
+
+  <div class="section">
+    <h2>8. Organisasi &amp; Tim</h2>
+    <table class="avoid">
+      <thead><tr><th>Peran</th><th>Tanggung jawab</th><th>Basis</th></tr></thead>
+      <tbody>
+        <tr><td>CEO</td><td>Strategi, kemitraan, operasional, penggalangan modal</td><td>Solo</td></tr>
+        <tr><td>Business Development &amp; Product Strategy</td><td>Akuisisi klinik, riset kebutuhan, arah produk</td><td>Solo</td></tr>
+        <tr><td>Engineering (project-based)</td><td>Pengembangan &amp; pemeliharaan produk</td><td>Remote/Proyek</td></tr>
+      </tbody>
+    </table>
+    <p class="muted">Tim sengaja ramping (lean) dengan biaya basis Solo untuk menjaga overhead rendah dan mempercepat break-even.</p>
+  </div>
+
+  <div class="section">
+    <h2>9. Studi Kelayakan (Ringkas)</h2>
+    <table class="avoid">
+      <thead><tr><th>Dimensi</th><th>Putusan</th><th>Catatan</th></tr></thead>
+      <tbody>
+        <tr><td>Teknis</td><td><span class="badge b-safe">Sangat Layak</span></td><td>Next.js + cloud terjangkau; prototype 17 halaman sudah live</td></tr>
+        <tr><td>Operasional</td><td><span class="badge b-safe">Layak</span></td><td>Low-click; onboarding &amp; dukungan ringan</td></tr>
+        <tr><td>Pasar</td><td><span class="badge b-safe">Layak</span></td><td>RME diwajibkan; pasar besar &amp; belum tergarap</td></tr>
+        <tr><td>Ekonomi</td><td><span class="badge b-warn">Layak Bersyarat</span></td><td>Profit pada skala ≥47 klinik; fase awal = investasi</td></tr>
+        <tr><td>Hukum</td><td><span class="badge b-warn">Bersyarat</span></td><td>Wajib hardening PDP/RME sebelum data nyata</td></tr>
+        <tr><td>Jadwal</td><td><span class="badge b-safe">Layak</span></td><td>MVP siap; iterasi cepat</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>10. Analisis Risiko &amp; Mitigasi</h2>
+    <table>
+      <thead><tr><th>Risiko</th><th>Dampak</th><th>Mitigasi</th></tr></thead>
+      <tbody>
+        <tr><td>Akuisisi klinik lebih lambat dari proyeksi</td><td>Break-even mundur</td><td>Pilot kuat, referral, harga kompetitif, fokus regional</td></tr>
+        <tr><td>Runway/pendanaan kurang</td><td>Tinggi</td><td>Jaga overhead Solo rendah, milestone pendanaan, pendapatan onboarding</td></tr>
+        <tr><td>Kepatuhan PDP/RME</td><td>Tinggi</td><td>Hardening keamanan, audit, kemitraan kepatuhan</td></tr>
+        <tr><td>Persaingan vendor besar</td><td>Sedang</td><td>Diferensiasi: simpel, terjangkau, ramah pediatri</td></tr>
+        <tr><td>Ketergantungan engineering</td><td>Sedang</td><td>Dokumentasi, kode terstruktur, kontrak pemeliharaan</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section avoid">
+    <h2>11. Roadmap</h2>
+    <table>
+      <thead><tr><th>Fase</th><th>Fokus</th></tr></thead>
+      <tbody>
+        <tr><td>Fase 1 (MVP — selesai)</td><td>Operasional inti + RME + KMS + kasir + dashboard + website publik</td></tr>
+        <tr><td>Fase 1.5 (Hardening)</td><td>Autentikasi, database, enkripsi, audit log, kepatuhan PDP/RME</td></tr>
+        <tr><td>Fase 2 (Automasi)</td><td>Integrasi WhatsApp, SATUSEHAT dua arah, billing/asuransi, analitik lanjutan</td></tr>
+        <tr><td>Fase 3 (Skala)</td><td>Multi-cabang, self-service onboarding, ekspansi nasional</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section avoid">
+    <h2>12. Kesimpulan</h2>
+    <p>SEHA layak dikembangkan sebagai produk SaaS RME ringan untuk praktik mandiri &amp; klinik kecil. Dengan biaya
+    tim basis Solo yang efisien, <b>break-even tercapai pada ±47 klinik</b> dan profitabilitas pada Tahun 3.
+    Pilot dengan dr. Aisyah menjadi fondasi bukti nilai dan pintu masuk ekspansi regional. Kunci keberhasilan:
+    eksekusi akuisisi yang disiplin, kepatuhan regulasi, dan menjaga overhead tetap ramping.</p>
+  </div>
+
+  <p class="footer-note">Dokumen perencanaan internal — angka ilustratif/asumsi, bukan nasihat finansial/hukum. Prototype: seha-clinic.vercel.app</p>
+</body>
+</html>
